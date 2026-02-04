@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto · Vista de la Rosa Jarabacoa</title>
+
+    <!-- Fuentes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../public/villa.PNG" />
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="../css/shared.css" />
+    <link rel="stylesheet" href="../css/contacto.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent py-3"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-semibold brand" href="index.html">
+          <img
+            src="../public/villa.PNG"
+            alt="Vista de la Rosa logo"
+            class="brand-logo me-2"
+          />
+          Vista de la Rosa
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="villas.html">Villas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ubicacion.html">Ubicación</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="contacto.html"
+                >Contacto</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-5 bg-cream">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <div
+              class="card p-4 p-lg-5 border-0 shadow-lg rounded-4 contact-card text-center"
+            >
+              <div class="contact-icon-circle mb-3 mx-auto">
+                <i class="bi bi-whatsapp"></i>
+              </div>
+              <h1 class="section-title mb-3">Contacto y reservas</h1>
+              <p class="text-muted mb-3">
+                Para coordinar tu estadía, precios y disponibilidad en Villa
+                Vista Montaña Jimenoa de la Rosa, contáctanos directamente por
+                WhatsApp.
+              </p>
+              <p class="fw-semibold mb-2">Teléfono / WhatsApp</p>
+              <p class="fs-5 mb-3">
+                <a
+                  href="tel:+18093233496"
+                  class="link-dark text-decoration-none"
+                  >809 323 3496</a
+                >
+              </p>
+              <p class="mb-4">
+                <i class="bi bi-envelope me-2 text-forest"></i
+                ><a
+                  href="mailto:reservas@vistadelarosa.com"
+                  class="link-dark text-decoration-none"
+                  >reservas@vistadelarosa.com</a
+                >
+              </p>
+              <p class="text-muted small mb-4">
+                Para precios y disponibilidad, escribir por mensaje privado.
+              </p>
+              <div class="d-grid gap-2 gap-md-3">
+                <!-- COMENTARIO: El botón usa WHATSAPP_NUMBER definido en script.js para abrir WhatsApp -->
+                <a
+                  href="#"
+                  onclick="openWhatsAppGeneral(); return false;"
+                  class="btn btn-success btn-lg"
+                  ><i class="bi bi-whatsapp me-2"></i>Mensaje privado por
+                  WhatsApp</a
+                >
+                <a
+                  href="mailto:reservas@vistadelarosa.com"
+                  class="btn btn-outline-secondary btn-lg"
+                  >Enviar correo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
+    <!-- Footer Include -->
+    <script>
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
+          if (typeof setupPageTransitions === "function") {
+            setupPageTransitions();
+          }
+        });
+    </script>
+    <script>
+      function openWhatsAppGeneral() {
+        const phone =
+          typeof WHATSAPP_NUMBER !== "undefined" && WHATSAPP_NUMBER
+            ? WHATSAPP_NUMBER
+            : "18093233496";
+        const message = encodeURIComponent(
+          "Hola, me gustaría más información sobre Villa Vista Montaña Jimenoa de la Rosa, precios y disponibilidad"
+        );
+        window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+      }
+    </script>
+  </body>
+</html>

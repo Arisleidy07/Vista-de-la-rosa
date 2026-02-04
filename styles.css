@@ -1,0 +1,632 @@
+/*
+  Paleta y Tipografías
+  - Verde bosque profundo: #1B3A2A
+  - Tierra: #8B6E4E
+  - Crema: #F6F1E9
+  - Dorado/Cobre: #C2A36B
+  - Texto oscuro: #2E2A27
+*/
+
+:root {
+  --forest: #1b3a2a;
+  --forest-700: #224737;
+  --earth: #8b6e4e;
+  --cream: #f6f1e9;
+  --cream-90: rgba(246, 241, 233, 0.9);
+  --cream-80: rgba(246, 241, 233, 0.8);
+  --cream-20: rgba(246, 241, 233, 0.2);
+  --gold: #c2a36b;
+  --gold-700: #a78651;
+  --text: #2e2a27;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+  padding-top: 72px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand,
+.section-title {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+/* Utilidades */
+.bg-cream {
+  background-color: var(--cream) !important;
+}
+.bg-forest {
+  background-color: var(--forest) !important;
+}
+.text-forest {
+  color: var(--forest) !important;
+}
+.text-cream {
+  color: var(--cream) !important;
+}
+.text-cream-80 {
+  color: var(--cream-80) !important;
+}
+.border-cream-20 {
+  border-color: var(--cream-20) !important;
+}
+
+/* Bordes suaves globales y offset para anclas con navbar fixed-top */
+.btn,
+.card,
+.modal-content,
+.badge,
+.dropdown-menu,
+.form-control,
+.input-group-text {
+  border-radius: 12px !important;
+}
+header,
+section,
+footer {
+  scroll-margin-top: 88px;
+}
+
+/* Sticky footer */
+main,
+.hero {
+  flex: 1 0 auto;
+}
+.footer {
+  margin-top: auto;
+}
+
+/* Navbar */
+.navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar .brand {
+  color: var(--gold) !important;
+  letter-spacing: 0.5px;
+}
+.navbar .nav-link {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.navbar.nav-forest .nav-link,
+.navbar.nav-scrolled .nav-link {
+  color: #ffffffd9;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--gold);
+}
+.navbar.nav-scrolled {
+  background-color: var(--forest) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+/* Alias explícito para estado bosque */
+.navbar.nav-forest {
+  background-color: var(--forest) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+/* Estado crema: texto oscuro para contraste */
+.navbar.nav-cream {
+  background-color: var(--cream) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.navbar.nav-cream .nav-link {
+  color: rgba(0, 0, 0, 0.85);
+}
+.navbar.nav-cream .nav-link:hover,
+.navbar.nav-cream .nav-link.active {
+  color: var(--earth);
+}
+.navbar.nav-cream .navbar-brand {
+  color: var(--forest) !important;
+}
+/* Toggler oscuro para fondo claro */
+.navbar.nav-cream .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+.navbar.nav-cream .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Hero */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  place-items: center;
+  background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1920&auto=format&fit=crop");
+  /* COMENTARIO: Reemplaza la URL anterior por una imagen real de tus villas/montañas si lo deseas */
+  background-size: cover;
+  background-position: center;
+}
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.35) 30%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+.hero-title {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero .btn {
+  animation: fadeUp 0.8s ease-out both;
+  animation-delay: 0.15s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title {
+  color: var(--forest);
+  font-weight: 700;
+}
+
+/* Botones personalizados */
+.btn-primary {
+  --bs-btn-bg: var(--gold);
+  --bs-btn-color: var(--forest);
+  --bs-btn-border-color: var(--gold);
+  --bs-btn-hover-bg: var(--gold-700);
+  --bs-btn-hover-border-color: var(--gold-700);
+  --bs-btn-active-bg: var(--gold-700);
+  --bs-btn-active-border-color: var(--gold-700);
+}
+.btn-gold {
+  --bs-btn-bg: var(--gold);
+  --bs-btn-color: var(--forest);
+  --bs-btn-border-color: var(--gold);
+  --bs-btn-hover-bg: var(--gold-700);
+  --bs-btn-hover-border-color: var(--gold-700);
+  --bs-btn-active-bg: var(--gold-700);
+  --bs-btn-active-border-color: var(--gold-700);
+}
+.btn-forest {
+  --bs-btn-bg: var(--forest);
+  --bs-btn-color: var(--cream);
+  --bs-btn-border-color: var(--forest);
+  --bs-btn-hover-bg: var(--forest-700);
+  --bs-btn-hover-border-color: var(--forest-700);
+  --bs-btn-active-bg: var(--forest-700);
+  --bs-btn-active-border-color: var(--forest-700);
+}
+
+/* Cards de Villas */
+.villa-card {
+  border: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.villa-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+}
+
+.villa-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.villa-badge {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(27, 58, 42, 0.9);
+  color: var(--cream);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+.price-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: var(--gold);
+  color: var(--forest);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Amenidades */
+#modalAmenities .amenity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(194, 163, 107, 0.15);
+  color: var(--forest);
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+#modalAmenities .amenity-chip i {
+  color: var(--gold);
+}
+
+/* Footer */
+.footer {
+  background: var(--forest);
+  color: #fff;
+}
+.footer .brand {
+  color: var(--gold);
+}
+.footer .text-light-50 {
+  color: rgba(255, 255, 255, 0.65);
+}
+.footer .footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+.footer .footer-link:hover {
+  color: var(--gold);
+}
+.footer .social {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+}
+.footer .social:hover {
+  color: var(--gold);
+}
+
+/* Media principal del modal (estilo "Amazon") */
+#detailsModal .media-main {
+  max-width: 560px;
+  margin: 0 auto;
+}
+#detailsModal .media-main .carousel-inner {
+  aspect-ratio: 1 / 1;
+}
+#detailsModal .media-main .carousel-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 0;
+}
+#detailsModal .media-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+}
+#modalThumbs img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 0;
+}
+#modalThumbs .thumb-item {
+  cursor: pointer;
+}
+#modalThumbs .thumb-item.active img,
+#modalThumbs .thumb-item:hover img {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(194, 163, 107, 0.25);
+}
+/* Oculta indicadores del carrusel (usamos miniaturas) */
+#detailsModal .carousel-indicators,
+#imageLightbox .carousel-indicators {
+  display: none !important;
+}
+/* Lightbox de imagen: quepan imagen y miniaturas sin scroll vertical */
+#imageLightbox .modal-content {
+  height: 100vh;
+}
+#imageLightbox .modal-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+#imageLightbox .media-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 80vw;
+  max-height: calc(100vh - 140px);
+}
+#imageLightbox .media-main .carousel,
+#imageLightbox .media-main .carousel-inner {
+  height: 100%;
+}
+#imageLightbox .media-main .carousel-inner {
+  aspect-ratio: auto;
+}
+#imageLightbox .media-main .carousel-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 0;
+}
+#imageLightbox .media-main img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+}
+#lightboxThumbs {
+  flex: 0 0 auto;
+  display: flex !important;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+#lightboxThumbs .thumb-item {
+  flex: 0 0 auto;
+  width: 72px;
+}
+#lightboxThumbs img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 0;
+}
+#lightboxThumbs .thumb-item {
+  cursor: pointer;
+}
+#lightboxThumbs .thumb-item.active img,
+#lightboxThumbs .thumb-item:hover img {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(194, 163, 107, 0.25);
+}
+#modalThumbs .ratio-16x9 {
+  border-radius: 0 !important;
+}
+#detailsModal .carousel-item {
+  border-radius: 0 !important;
+}
+#imageLightbox .carousel-item {
+  border-radius: 0 !important;
+}
+#detailsModal .carousel-inner,
+#imageLightbox .carousel-inner {
+  border-radius: 0 !important;
+}
+#detailsModal .carousel,
+#imageLightbox .carousel {
+  border-radius: 0 !important;
+}
+#detailsModal .media-main,
+#imageLightbox .media-main {
+  border-radius: 0 !important;
+}
+#detailsModal .modal-content,
+#imageLightbox .modal-content {
+  border-radius: 0 !important;
+}
+#detailsModal .modal-dialog,
+#imageLightbox .modal-dialog {
+  border-radius: 0 !important;
+}
+#detailsModal iframe,
+#imageLightbox iframe {
+  border-radius: 0 !important;
+}
+#detailsModal .ratio,
+#imageLightbox .ratio {
+  border-radius: 0 !important;
+}
+#detailsModal *,
+#imageLightbox * {
+  border-radius: 0 !important;
+}
+#detailsModal img,
+#imageLightbox img {
+  border: none !important;
+}
+#modalThumbs .thumb-item.active img,
+#modalThumbs .thumb-item:hover img,
+#lightboxThumbs .thumb-item.active img,
+#lightboxThumbs .thumb-item:hover img {
+  border: 2px solid var(--gold) !important;
+  box-shadow: 0 0 0 2px rgba(194, 163, 107, 0.25) !important;
+}
+#detailsModal .modal-body {
+  display: flex;
+  flex-direction: column;
+}
+#detailsModal .modal-content {
+  display: flex;
+  flex-direction: column;
+}
+#detailsModal .modal-dialog {
+  display: flex;
+  flex-direction: column;
+}
+#imageLightbox .modal-dialog {
+  display: flex;
+  flex-direction: column;
+}
+#imageLightbox .modal-content {
+  display: flex;
+  flex-direction: column;
+}
+#imageLightbox .modal-body {
+  display: flex;
+  flex-direction: column;
+}
+#detailsModal .modal-content,
+#imageLightbox .modal-content {
+  height: 100%;
+}
+#detailsModal .modal-dialog,
+#imageLightbox .modal-dialog {
+  height: 100%;
+}
+#detailsModal .modal-body,
+#imageLightbox .modal-body {
+  height: 100%;
+}
+#detailsModal .modal-content,
+#imageLightbox .modal-content {
+  margin: 0;
+}
+#detailsModal .modal-dialog,
+#imageLightbox .modal-dialog {
+  margin: 0;
+}
+#detailsModal .modal-body,
+#imageLightbox .modal-body {
+  padding: 1rem;
+}
+#detailsModal .modal-content,
+#imageLightbox .modal-content {
+  padding: 0;
+}
+#detailsModal .modal-dialog,
+#imageLightbox .modal-dialog {
+  padding: 0;
+}
+#detailsModal .modal-content,
+#imageLightbox .modal-content {
+  border: none;
+}
+#detailsModal .modal-dialog,
+#imageLightbox .modal-dialog {
+  border: none;
+}
+#detailsModal .modal-body,
+#imageLightbox .modal-body {
+  border: none;
+}
+#detailsModal .modal-header,
+#imageLightbox .modal-header {
+  border: none;
+}
+#detailsModal .modal-footer,
+#imageLightbox .modal-footer {
+  border: none;
+}
+#detailsModal .modal-content,
+#imageLightbox .modal-content {
+  box-shadow: none;
+}
+#detailsModal .modal-dialog,
+#imageLightbox .modal-dialog {
+  box-shadow: none;
+}
+#detailsModal .modal-body,
+#imageLightbox .modal-body {
+  box-shadow: none;
+}
+#detailsModal .modal-header,
+#imageLightbox .modal-header {
+  box-shadow: none;
+}
+#detailsModal .modal-footer,
+#imageLightbox .modal-footer {
+  box-shadow: none;
+}
+
+/* Ajuste responsivo de miniaturas en lightbox */
+@media (max-width: 576px) {
+  #lightboxThumbs .thumb-item,
+  #lightboxThumbs img {
+    width: 56px;
+    height: 56px;
+  }
+  #imageLightbox .media-main {
+    max-width: 95vw;
+  }
+}
+@media (max-width: 768px) {
+  .villa-card .card-img-top {
+    height: 180px;
+  }
+  #detailsModal .media-main {
+    max-width: 100%;
+  }
+}
+
+/* Utilidad de truncado */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Mejoras finales para lightbox centrado y proporciones perfectas */
+#imageLightbox .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+}
+#imageLightbox .media-main {
+  flex: 0 1 auto;
+  max-height: calc(100vh - 160px);
+  max-width: 85vw;
+}
+#lightboxThumbs {
+  flex: 0 0 auto;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  #imageLightbox .media-main {
+    max-width: 95vw;
+    max-height: calc(100vh - 140px);
+  }
+  #lightboxThumbs {
+    margin-top: 0.75rem;
+  }
+}
+@media (max-width: 576px) {
+  #imageLightbox .media-main {
+    max-width: 98vw;
+    max-height: calc(100vh - 120px);
+  }
+  #lightboxThumbs .thumb-item,
+  #lightboxThumbs img {
+    width: 56px;
+    height: 56px;
+  }
+}

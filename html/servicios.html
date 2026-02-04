@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Servicios · Vista de la Rosa Jarabacoa</title>
+
+    <!-- Fuentes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../public/villa.PNG" />
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="../css/shared.css" />
+    <link rel="stylesheet" href="../css/servicios.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent py-3"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-semibold brand" href="index.html">
+          <img
+            src="../public/villa.PNG"
+            alt="Vista de la Rosa logo"
+            class="brand-logo me-2"
+          />
+          Vista de la Rosa
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="villas.html">Villas</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="servicios.html"
+                >Servicios</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ubicacion.html">Ubicación</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-5 bg-cream">
+      <div class="container-fluid px-3 px-lg-5">
+        <div class="mb-4 text-center">
+          <h1 class="section-title">Amenidades y servicios</h1>
+          <p class="text-muted mb-0">
+            Villa Vista Montaña Jimenoa de la Rosa es un complejo de villas en
+            alquiler en Jarabacoa, rodeado de naturaleza, clima fresco y vistas
+            espectaculares. Ideal para vacaciones.
+          </p>
+          <p class="text-muted small mb-0">
+            Capacidad total para 55 personas. Cada habitación tiene capacidad
+            para seis personas, con una cama matrimonial y un camarote de dos
+            camas.
+          </p>
+        </div>
+        <div class="row g-4">
+          <!-- 1) Comedor -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Comedor"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <h3 class="h6 mb-1">Comedor</h3>
+              <p class="text-muted small mb-2">
+                Comedor amplio, ideal para compartir en familia
+              </p>
+              <div class="service-gallery mt-1" data-service-key="comedor">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería comedor"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2) Cocina equipada -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Cocina equipada"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-kitchen-set"></i>
+              </div>
+              <h3 class="h6 mb-1">Cocina Equipada</h3>
+              <p class="text-muted small mb-2">
+                Cocina equipada para preparación de alimentos para grupos
+              </p>
+              <div class="service-gallery mt-1" data-service-key="cocina">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería cocina equipada"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3) Piscina principal -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Piscina principal"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-person-swimming"></i>
+              </div>
+              <h3 class="h6 mb-1">Piscina</h3>
+              <p class="text-muted small mb-2">
+                Piscina principal del complejo
+              </p>
+              <div class="service-gallery mt-1" data-service-key="piscina">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería piscina y jacuzzi"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4) Vistas a montañas -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Vistas a montañas"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-mountain-sun"></i>
+              </div>
+              <h3 class="h6 mb-1">Vistas a Montañas</h3>
+              <p class="text-muted small mb-2">Entorno natural y aire puro</p>
+              <div class="service-gallery mt-1" data-service-key="montana">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería vistas a montañas"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <!-- 5) Jacuzzi -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Jacuzzi"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-hot-tub-person"></i>
+              </div>
+              <h3 class="h6 mb-1">Jacuzzi</h3>
+              <p class="text-muted small mb-2">
+                Zonas de jacuzzi para relajación total
+              </p>
+              <div class="service-gallery mt-1" data-service-key="jacuzzi">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería jacuzzi"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7) Área de descanso -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Área de descanso"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-couch"></i>
+              </div>
+              <h3 class="h6 mb-1">Área de Descanso</h3>
+              <p class="text-muted small mb-2">
+                Habitaciones y espacios cómodos para descansar y compartir en
+                familia
+              </p>
+              <div class="service-gallery mt-1" data-service-key="sala">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería sala de estar"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8) Bar -->
+          <div class="col-12 col-md-6 col-lg-6">
+            <div
+              class="card h-100 shadow-sm border-0 rounded-4 p-3 text-center service-card"
+              data-service-title="Billar"
+            >
+              <div class="display-6 text-forest mb-2">
+                <i class="fa-solid fa-martini-glass-citrus"></i>
+              </div>
+              <h3 class="h6 mb-1">Billar</h3>
+              <p class="text-muted small mb-2">
+                Mesa de billar para compartir y divertirse
+              </p>
+              <div class="service-gallery mt-1" data-service-key="billar">
+                <button
+                  class="service-gallery-arrow service-gallery-prev"
+                  type="button"
+                  aria-label="Imagen anterior"
+                >
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="service-gallery-image-wrapper">
+                  <img
+                    class="service-gallery-image"
+                    src=""
+                    alt="Galería bar"
+                    loading="lazy"
+                  />
+                </div>
+                <button
+                  class="service-gallery-arrow service-gallery-next"
+                  type="button"
+                  aria-label="Imagen siguiente"
+                >
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div
+      class="modal fade"
+      id="serviceGalleryModal"
+      tabindex="-1"
+      aria-labelledby="serviceGalleryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-cream">
+          <div class="modal-header border-0">
+            <h5
+              class="modal-title text-forest"
+              id="serviceGalleryModalLabel"
+            ></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body pt-0">
+            <div class="service-lightbox-main mb-3">
+              <button
+                type="button"
+                class="service-lightbox-arrow service-lightbox-prev"
+                aria-label="Imagen anterior"
+              >
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <div
+                id="serviceLightboxMain"
+                class="service-lightbox-main-inner"
+              ></div>
+              <button
+                type="button"
+                class="service-lightbox-arrow service-lightbox-next"
+                aria-label="Imagen siguiente"
+              >
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+            <div
+              id="serviceLightboxThumbs"
+              class="service-lightbox-thumbs"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
+    <!-- Footer Include -->
+    <script>
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
+          if (typeof setupPageTransitions === "function") {
+            setupPageTransitions();
+          }
+        });
+    </script>
+  </body>
+</html>
