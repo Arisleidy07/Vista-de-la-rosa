@@ -37,6 +37,12 @@
   pointer-events: none;
 }
 
+.hero-video .ratio,
+.hero-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
 .hero .container {
   position: relative;
   z-index: 2;
