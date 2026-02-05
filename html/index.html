@@ -96,19 +96,25 @@
       id="inicio"
       class="hero position-relative d-flex align-items-center"
     >
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster="../public/5.jpg"
-        aria-hidden="true"
-      >
-        <source src="../intro.MP4" type="video/mp4" />
-        <source src="./VILLA.MP4" type="video/mp4" />
-      </video>
+      <div class="hero-video">
+        <div class="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/EXqYxY8lBvI?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=EXqYxY8lBvI"
+            title="Video introductorio Vista de la Rosa"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
       <!-- COMENTARIO: Puedes reemplazar la imagen de fondo del hero en styles.css o estableciendo un style inline con tu imagen real -->
       <div
         class="hero-overlay position-absolute top-0 start-0 w-100 h-100"
