@@ -810,6 +810,11 @@ function renderLightboxCarousel(images, videoUrl, startIndex) {
               allowfullscreen
             ></iframe>
           </div>
+          <div class="text-center mt-2">
+            <a href="${item.src}" target="_blank" rel="noopener" class="small text-decoration-underline">
+              Abrir video en YouTube
+            </a>
+          </div>
         </div>
       `;
       }
@@ -1040,6 +1045,11 @@ function renderCarousel(images, videoUrl) {
             <iframe
               src="${item.src}"
               title="Video Tour"
+          <div class="text-center mt-2">
+            <a href="${item.src}" target="_blank" rel="noopener" class="small text-decoration-underline">
+              Abrir video en YouTube
+            </a>
+          </div>
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
