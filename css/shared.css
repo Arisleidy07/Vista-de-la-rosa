@@ -163,6 +163,11 @@ main,
   background-size: 100% 100%;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f6f1e9' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M5 8h20M5 15h14M5 22h10'/%3e%3c/svg%3e");
 }
+@media (min-width: 992px) {
+  .navbar .navbar-toggler {
+    display: none;
+  }
+}
 .navbar.nav-forest .nav-link,
 .navbar.nav-scrolled .nav-link {
   color: #ffffffd9;

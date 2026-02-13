@@ -3,9 +3,6 @@
 // Para Vista de la Rosa: 1 (809) 323-3496 → 18093233496
 const WHATSAPP_NUMBER = "18093233496";
 
-const ytEmbed = (id) =>
-  `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`;
-
 // COMENTARIO: Puedes reemplazar estas URLs por tus imágenes reales. Pueden ser rutas locales o URLs absolutas.
 const placeholderImages = [
   "https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1600&auto=format&fit=crop", // cabaña noche
@@ -35,14 +32,13 @@ const serviceGalleryImages = {
     "../vista%20ala%20monta%C3%B1a%20/7.JPG",
     "../vista%20ala%20monta%C3%B1a%20/8.JPG",
   ],
-  jacuzzi: ["../jacuzzi/2.JPG", "../jacuzzi/4.JPG", "../jacuzzi/5.JPG"],
+  // Quitamos la miniatura 2 rota de jacuzzi y la 6 rota de sala
+  jacuzzi: ["../jacuzzi/2.JPG", "../jacuzzi/5.JPG"],
   sala: [
     "../area%20de%20DESCANSO/1.JPG",
     "../area%20de%20DESCANSO/3.JPG",
     "../area%20de%20DESCANSO/4.JPG",
     "../area%20de%20DESCANSO/5.JPG",
-    "../area%20de%20DESCANSO/8.JPG",
-    "../area%20de%20DESCANSO/10.JPG",
   ],
   billar: ["../billar/2.JPG", "../billar/3.JPG"],
 };
@@ -52,14 +48,12 @@ let currentServiceGalleryIndex = 0;
 let currentServiceGalleryVideoUrl = null;
 let currentServiceGalleryHasVideo = false;
 
+// Videos locales para las galerías de servicios (uso en localhost).
 const serviceGalleryVideoUrls = {
-  comedor: ytEmbed("G6JwpAU6nFk"),
-  cocina: ytEmbed("G6JwpAU6nFk"),
-  piscina: ytEmbed("ZUbbqNfO8p8"),
-  montana: null,
-  jacuzzi: ytEmbed("1Scq_M3lxJI"),
-  sala: ytEmbed("lZQcaXD9JW0"),
-  billar: ytEmbed("exk6Wce3RmQ"),
+  piscina: "../piscina/piscina.MP4",
+  montana: "../vista%20ala%20monta%C3%B1a%20/4.MP4",
+  jacuzzi: "../jacuzzi/jacuzzi.MP4",
+  sala: "../area%20de%20DESCANSO/estar.MP4",
 };
 
 function swapImageWithFade(imgEl, newSrc, newAlt, duration = 400) {
@@ -228,10 +222,10 @@ function renderServiceGalleryLightbox(images, videoUrl) {
   } else {
     const img = document.createElement("img");
     img.className = "img-fluid rounded shadow-sm";
-    img.alt = "";
-    mainHost.appendChild(img);
     const mainAlt = `Imagen ${currentServiceGalleryIndex + 1}`;
-    swapImageWithFade(img, (active && active.src) || imgs[0], mainAlt);
+    img.alt = mainAlt;
+    img.src = (active && active.src) || imgs[0];
+    mainHost.appendChild(img);
   }
 
   thumbsContainer.innerHTML = "";
@@ -581,7 +575,7 @@ const villas = [
       "../habitacion%20%231/6.JPG",
       "../habitacion%20%231/25.JPG",
     ],
-    videoUrl: ytEmbed("sjmSHZlYO_Q"),
+    videoUrl: "../habitacion%20%231/bloque%201.MP4",
   },
   {
     id: "h2",
@@ -595,7 +589,7 @@ const villas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("../habitacion%232", 11),
-    videoUrl: ytEmbed("GTGvjMlesWk"),
+    videoUrl: "../habitacion%232/bloque%202%20.MP4",
   },
   {
     id: "h3",
@@ -609,7 +603,7 @@ const villas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("../habitacion%233", 11),
-    videoUrl: ytEmbed("XyHTD1mHU5c"),
+    videoUrl: "../habitacion%233/bloque%203%20.MP4",
   },
   {
     id: "h4",
@@ -633,7 +627,7 @@ const villas = [
       "../habitacion%234/8.JPG",
       "../habitacion%234/9.JPG",
     ],
-    videoUrl: ytEmbed("yqAqie1-HrU"),
+    videoUrl: "../habitacion%234/bloque%204%20.MP4",
   },
   {
     id: "h5",
@@ -647,7 +641,7 @@ const villas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("../habitacion%235", 9),
-    videoUrl: ytEmbed("sExueatsnA8"),
+    videoUrl: "../habitacion%235/bloque%205%20.MP4",
   },
   {
     id: "h6",
@@ -661,7 +655,7 @@ const villas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("../habitacion%236", 9),
-    videoUrl: ytEmbed("N4sNhlUE58A"),
+    videoUrl: "../habitacion%236/bloque%206%20.MP4",
   },
   {
     id: "h7",
@@ -675,7 +669,7 @@ const villas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("../habitacion%237", 9),
-    videoUrl: ytEmbed("bweiRM_EFCE"),
+    videoUrl: "../habitacion%237/bloque%207%20.MP4",
   },
   {
     id: "h8",
@@ -689,7 +683,7 @@ const villas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("../habitacion%238", 14),
-    videoUrl: ytEmbed("pf0ct1JXHpk"),
+    videoUrl: "../habitacion%238/bloque%208%20.MP4",
   },
 ];
 
@@ -809,11 +803,6 @@ function renderLightboxCarousel(images, videoUrl, startIndex) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
-          </div>
-          <div class="text-center mt-2">
-            <a href="${item.src}" target="_blank" rel="noopener" class="small text-decoration-underline">
-              Abrir video en YouTube
-            </a>
           </div>
         </div>
       `;

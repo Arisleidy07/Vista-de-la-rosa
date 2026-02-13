@@ -117,7 +117,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background: #000;
+  background: var(--cream);
 }
 
 #detailsModal .modal-carousel .carousel-item img,
@@ -141,6 +141,10 @@
   opacity: 1;
   transition: all var(--transition-fast);
   z-index: 10;
+  border-radius: 999px;
+  background: rgba(27, 58, 42, 0.16);
+  border: 1px solid rgba(27, 58, 42, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .modal-carousel .carousel-control-prev {
@@ -1424,6 +1428,12 @@ h6,
 /* ==================== FILTROS DE BLOQUES ==================== */
 .block-filters {
   padding: 1rem 0;
+}
+
+@media (max-width: 991.98px) {
+  .block-filter-btn {
+    display: none;
+  }
 }
 
 /* Dropdown para móvil */

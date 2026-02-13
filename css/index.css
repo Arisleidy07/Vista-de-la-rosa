@@ -5,8 +5,10 @@
   place-items: center;
   position: relative;
   overflow: hidden;
-  background-image: none;
-  background-color: #000;
+  background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1920&auto=format&fit=crop");
+  /* COMENTARIO: Reemplaza la URL anterior por una imagen real de tus villas/montañas si lo deseas */
+  background-size: cover;
+  background-position: center;
 }
 .hero-overlay {
   background: linear-gradient(
