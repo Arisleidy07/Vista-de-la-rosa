@@ -292,7 +292,7 @@ body {
 #modalVariants .variant-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -1045,7 +1045,7 @@ body {
 .villa-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -1139,7 +1139,14 @@ body {
 
 .villa-modal-text {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: rgba(246, 241, 233, 0.5);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(139, 110, 78, 0.2);
+  margin-top: 0.75rem;
 }
 
 .villa-modal-about {
@@ -1439,7 +1446,7 @@ body {
 .lightbox-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -1454,7 +1461,7 @@ body {
 .lightbox-thumb-video img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
