@@ -15,6 +15,14 @@ function Layout({ children }) {
     import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
   const logoSrc = `${assetBase}villa.PNG`;
 
+  React.useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    if (isNavOpen) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isNavOpen]);
+
   const handleNavLinkClick = () => {
     setIsNavOpen(false);
   };
@@ -47,58 +55,85 @@ function Layout({ children }) {
             <span className="nav-toggle-bar" />
           </button>
 
-          <ul
+          <button
+            type="button"
             className={
-              "app-nav-links" + (isNavOpen ? " app-nav-links-open" : "")
+              "mobile-nav-overlay" +
+              (isNavOpen ? " mobile-nav-overlay-open" : "")
             }
+            onClick={handleNavLinkClick}
+            aria-label="Cerrar menú"
+          />
+
+          <div
+            className={
+              "mobile-nav-drawer" + (isNavOpen ? " mobile-nav-drawer-open" : "")
+            }
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menú"
           >
-            <li>
-              <NavLink
-                to="/"
-                end
-                className="app-nav-link"
+            <div className="mobile-nav-drawer-header">
+              <span className="mobile-nav-drawer-title">Menú</span>
+              <button
+                type="button"
+                className="mobile-nav-drawer-close"
                 onClick={handleNavLinkClick}
+                aria-label="Cerrar"
               >
-                Inicio
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/villas"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Villas
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/servicios"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Servicios
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/ubicacion"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Ubicación
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contacto"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Contacto
-              </NavLink>
-            </li>
-          </ul>
+                ×
+              </button>
+            </div>
+
+            <ul className="app-nav-links">
+              <li>
+                <NavLink
+                  to="/"
+                  end
+                  className="app-nav-link"
+                  onClick={handleNavLinkClick}
+                >
+                  Inicio
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/villas"
+                  className="app-nav-link"
+                  onClick={handleNavLinkClick}
+                >
+                  Villas
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/servicios"
+                  className="app-nav-link"
+                  onClick={handleNavLinkClick}
+                >
+                  Servicios
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/ubicacion"
+                  className="app-nav-link"
+                  onClick={handleNavLinkClick}
+                >
+                  Ubicación
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contacto"
+                  className="app-nav-link"
+                  onClick={handleNavLinkClick}
+                >
+                  Contacto
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
 
