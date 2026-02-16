@@ -47,8 +47,8 @@ export default function Footer() {
           <div className="footer-text-line">
             Jarabacoa, La Vega, República Dominicana
           </div>
-          <a href="tel:+18093233496" className="footer-link">
-            809 323 3496
+          <a href="tel:+18293410707" className="footer-link">
+            829 341 0707
           </a>
         </div>
       </div>

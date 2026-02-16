@@ -2,7 +2,7 @@ import React from "react";
 import { WHATSAPP_NUMBER } from "../data/villas";
 
 export default function WhatsAppButton() {
-  const phoneRaw = WHATSAPP_NUMBER || "18093233496";
+  const phoneRaw = WHATSAPP_NUMBER;
 
   const assetBase =
     import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
