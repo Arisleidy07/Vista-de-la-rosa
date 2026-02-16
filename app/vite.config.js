@@ -9,7 +9,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoName = process.env.GITHUB_REPOSITORY
   ? process.env.GITHUB_REPOSITORY.split("/")[1]
   : "";
-const base = repoName ? `/${repoName}/` : "/";
+const isGitHubPagesBuild =
+  process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS === "true";
+const base = isGitHubPagesBuild && repoName ? `/${repoName}/` : "/";
 
 function getContentType(filePath) {
   const ext = path.extname(filePath).toLowerCase();
