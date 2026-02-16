@@ -133,7 +133,8 @@ function VillasFilters({ selectedBlock, onChange }) {
 }
 
 function VillaCard({ villa, onOpen }) {
-  const mainImage = villa.images && villa.images.length ? villa.images[0] : "";
+  const mainImage =
+    villa.images && villa.images.length ? withBaseUrl(villa.images[0]) : "";
   return (
     <article className="villa-card">
       <div className="villa-card-media">
@@ -422,7 +423,10 @@ function VillaDetailsModal({ villa, onClose }) {
                         >
                           <span className="variant-thumb">
                             {coverThumb ? (
-                              <img src={coverThumb} alt="Ver bloque completo" />
+                              <img
+                                src={withBaseUrl(coverThumb)}
+                                alt="Ver bloque completo"
+                              />
                             ) : (
                               <span className="variant-thumb-fallback" />
                             )}
@@ -453,7 +457,7 @@ function VillaDetailsModal({ villa, onClose }) {
                             <span className="variant-thumb">
                               {variants.a.thumb ? (
                                 <img
-                                  src={variants.a.thumb}
+                                  src={withBaseUrl(variants.a.thumb)}
                                   alt={variants.a.label}
                                 />
                               ) : (
@@ -485,7 +489,7 @@ function VillaDetailsModal({ villa, onClose }) {
                             <span className="variant-thumb">
                               {variants.b.thumb ? (
                                 <img
-                                  src={variants.b.thumb}
+                                  src={withBaseUrl(variants.b.thumb)}
                                   alt={variants.b.label}
                                 />
                               ) : (
@@ -586,13 +590,18 @@ function VillaDetailsModal({ villa, onClose }) {
           initialIndex={activeIndex}
           items={(() => {
             const images = gallery.images || [];
-            const video = gallery.videoUrl;
-            const videoThumb = images[0] || null;
+            const video = gallery.videoUrl
+              ? withBaseUrl(gallery.videoUrl)
+              : null;
+            const videoThumb = images[0] ? withBaseUrl(images[0]) : null;
             const media = [
               ...(video
                 ? [{ type: "video", src: video, thumb: videoThumb }]
                 : []),
-              ...images.map((src) => ({ type: "image", src })),
+              ...images.map((src) => ({
+                type: "image",
+                src: withBaseUrl(src),
+              })),
             ];
             return media;
           })()}

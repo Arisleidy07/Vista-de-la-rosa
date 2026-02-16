@@ -5,6 +5,8 @@ export default function ContactPage() {
   const phoneRaw = WHATSAPP_NUMBER || "18093233496";
   const phoneDisplay = "809 323 3496";
 
+  const whatsappIconSrc = `${import.meta.env.BASE_URL}ws.png`;
+
   const handleWhatsAppClick = () =>
     window.open(`https://wa.me/${phoneRaw}`, "_blank");
 
@@ -37,7 +39,7 @@ export default function ContactPage() {
               onClick={handleWhatsAppClick}
             >
               <img
-                src="/ws.png"
+                src={whatsappIconSrc}
                 alt="WhatsApp"
                 style={{
                   width: "1.3rem",

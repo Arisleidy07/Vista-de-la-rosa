@@ -210,8 +210,10 @@ export default function ServicesPage() {
             }
             initialIndex={lightboxIndex}
             items={(() => {
-              const images = serviceImages[lightboxServiceKey] || [];
-              const video = serviceVideos[lightboxServiceKey];
+              const images = (serviceImages[lightboxServiceKey] || []).map(
+                (src) => withBaseUrl(src),
+              );
+              const video = withBaseUrl(serviceVideos[lightboxServiceKey]);
               const videoThumb = images[0] || null;
               const media = [
                 ...(video

@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
+  const introSrc = `${import.meta.env.BASE_URL}intro.MP4`;
+
   return (
     <section className="hero">
       <video
@@ -12,7 +14,7 @@ export default function HomePage() {
         playsInline
         preload="metadata"
       >
-        <source src="/intro.MP4" type="video/mp4" />
+        <source src={introSrc} type="video/mp4" />
       </video>
       <div className="hero-overlay" />
       <div className="hero-content">

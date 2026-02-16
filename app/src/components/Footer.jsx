@@ -4,12 +4,14 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
   const year = new Date().getFullYear();
 
+  const logoSrc = `${import.meta.env.BASE_URL}villa.PNG`;
+
   return (
     <footer className="app-footer">
       <div className="footer-inner">
         <div className="footer-brand">
           <img
-            src="/villa.PNG"
+            src={logoSrc}
             alt="Vista de la Rosa logo"
             className="footer-logo"
           />
