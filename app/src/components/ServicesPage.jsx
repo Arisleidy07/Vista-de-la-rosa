@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Lightbox from "./Lightbox";
-import { cloudinaryVideoUrl } from "../data/cloudinary";
+import { getYouTubeEmbedUrl } from "../youtube";
 
 const services = [
   {
@@ -79,21 +79,35 @@ const serviceImages = {
   billar: ["/billar/2.JPG", "/billar/3.JPG"],
 };
 
-const useCloudinary = Boolean(import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
-
 const serviceVideos = {
-  piscina: useCloudinary
-    ? cloudinaryVideoUrl("vistadelarosa/piscina/piscina")
-    : "/piscina/piscina.MP4",
-  jacuzzi: useCloudinary
-    ? cloudinaryVideoUrl("vistadelarosa/jacuzzi/jacuzzi")
-    : "/jacuzzi/jacuzzi.MP4",
-  sala: useCloudinary
-    ? cloudinaryVideoUrl("vistadelarosa/area_de_DESCANSO/estar")
-    : "/area%20de%20DESCANSO/estar.MP4",
-  billar: useCloudinary
-    ? cloudinaryVideoUrl("vistadelarosa/billar/1")
-    : "/billar/1.MP4",
+  piscina: getYouTubeEmbedUrl("https://youtu.be/4lmTAwMcIAg", {
+    autoplay: false,
+    muted: true,
+    loop: true,
+    controls: false,
+    playsInline: true,
+  }),
+  jacuzzi: getYouTubeEmbedUrl("https://youtu.be/aT4zy67X6K4", {
+    autoplay: false,
+    muted: true,
+    loop: true,
+    controls: false,
+    playsInline: true,
+  }),
+  sala: getYouTubeEmbedUrl("https://youtu.be/FhY11lOdlho", {
+    autoplay: false,
+    muted: true,
+    loop: true,
+    controls: false,
+    playsInline: true,
+  }),
+  billar: getYouTubeEmbedUrl("https://youtu.be/_A3fwSwbON8", {
+    autoplay: false,
+    muted: true,
+    loop: true,
+    controls: false,
+    playsInline: true,
+  }),
 };
 
 function withBaseUrl(src) {
@@ -111,7 +125,7 @@ function ServiceGallery({ serviceKey, onOpenLightbox }) {
   const images = (serviceImages[serviceKey] || []).map((src) =>
     withBaseUrl(src),
   );
-  const video = withBaseUrl(serviceVideos[serviceKey]);
+  const video = serviceVideos[serviceKey];
 
   const media = [
     ...(video ? [{ type: "video", src: video }] : []),
@@ -145,12 +159,13 @@ function ServiceGallery({ serviceKey, onOpenLightbox }) {
         onClick={() => onOpenLightbox && onOpenLightbox(0)}
       >
         {active.type === "video" ? (
-          <video
+          <iframe
             src={active.src}
             className="service-gallery-image"
-            controls
-            playsInline
-            preload="metadata"
+            title={`${serviceKey} video`}
+            frameBorder="0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
           />
         ) : (
           <img

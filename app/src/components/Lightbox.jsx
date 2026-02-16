@@ -152,15 +152,26 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
           onTouchEnd={onTouchEnd}
         >
           {active.type === "video" ? (
-            <video
-              src={active.src}
-              className="lightbox-main-media"
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-              poster={active.thumb || undefined}
-            />
+            active.src && String(active.src).includes("youtube") ? (
+              <iframe
+                src={active.src}
+                className="lightbox-main-media"
+                title={active.alt || "Video"}
+                frameBorder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <video
+                src={active.src}
+                className="lightbox-main-media"
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+                poster={active.thumb || undefined}
+              />
+            )
           ) : (
             <img
               src={active.src}

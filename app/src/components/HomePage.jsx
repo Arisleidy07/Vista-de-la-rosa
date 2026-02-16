@@ -1,27 +1,26 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { cloudinaryVideoUrl } from "../data/cloudinary";
+import { getYouTubeEmbedUrl } from "../youtube";
 
 export default function HomePage() {
-  const assetBase =
-    import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
-  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "";
-  const introSrc = cloudName
-    ? cloudinaryVideoUrl("vistadelarosa/intro")
-    : `${assetBase}intro.MP4`;
+  const introEmbed = getYouTubeEmbedUrl("https://youtu.be/lYKA2IJ7RXc", {
+    autoplay: true,
+    muted: true,
+    loop: true,
+    controls: false,
+    playsInline: true,
+  });
 
   return (
     <section className="hero">
-      <video
+      <iframe
         className="hero-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      >
-        <source src={introSrc} type="video/mp4" />
-      </video>
+        src={introEmbed}
+        title="Vista de la Rosa"
+        frameBorder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowFullScreen
+      />
       <div className="hero-overlay" />
       <div className="hero-content">
         <h1 className="hero-title">Tu escape perfecto en las montañas</h1>

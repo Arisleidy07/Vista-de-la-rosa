@@ -1,3 +1,5 @@
+import { getYouTubeEmbedUrl } from "../youtube";
+
 export const WHATSAPP_NUMBER = "18293410707";
 export const WHATSAPP_NUMBER_SECONDARY = "18296511212";
 
@@ -10,6 +12,29 @@ function cloudVideo(publicId, fallback) {
   if (!cloudName) return fallback;
   const normalized = publicId.startsWith("/") ? publicId.slice(1) : publicId;
   return `https://res.cloudinary.com/${cloudName}/video/upload/f_mp4/${normalized}`;
+}
+
+const blockYouTubeVideos = {
+  1: "https://youtu.be/sjmSHZlYO_Q",
+  2: "https://youtu.be/GTGvjMlesWk",
+  3: "https://youtu.be/XyHTD1mHU5c",
+  4: "https://youtu.be/yqAqie1-HrU",
+  5: "https://youtu.be/sExueatsnA8",
+  6: "https://youtu.be/N4sNhlUE58A",
+  7: "https://youtu.be/bweiRM_EFCE",
+  8: "https://youtu.be/pf0ct1JXHpk",
+};
+
+function youtubeVillaVideo(blockNumber) {
+  const link = blockYouTubeVideos[blockNumber];
+  if (!link) return null;
+  return getYouTubeEmbedUrl(link, {
+    autoplay: false,
+    muted: true,
+    loop: true,
+    controls: false,
+    playsInline: true,
+  });
 }
 
 export const blockDetailConfig = {
@@ -168,10 +193,7 @@ const baseVillas = [
       "/habitacion%20%231/6.JPG",
       "/habitacion%20%231/25.JPG",
     ],
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion_1/bloque_1",
-      "/habitacion%20%231/bloque%201.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(1),
   },
   {
     id: "h2",
@@ -184,10 +206,7 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("/habitacion%232", 11),
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion2/bloque_2",
-      "/habitacion%232/bloque%202%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(2),
   },
   {
     id: "h3",
@@ -200,10 +219,7 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("/habitacion%233", 11),
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion3/bloque_3",
-      "/habitacion%233/bloque%203%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(3),
   },
   {
     id: "h4",
@@ -226,10 +242,7 @@ const baseVillas = [
       "/habitacion%234/8.JPG",
       "/habitacion%234/9.JPG",
     ],
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion4/bloque_4",
-      "/habitacion%234/bloque%204%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(4),
   },
   {
     id: "h5",
@@ -242,10 +255,7 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("/habitacion%235", 9),
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion5/bloque_5",
-      "/habitacion%235/bloque%205%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(5),
   },
   {
     id: "h6",
@@ -258,10 +268,7 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("/habitacion%236", 9),
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion6/bloque_6",
-      "/habitacion%236/bloque%206%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(6),
   },
   {
     id: "h7",
@@ -274,10 +281,7 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("/habitacion%237", 9),
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion7/bloque_7",
-      "/habitacion%237/bloque%207%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(7),
   },
   {
     id: "h8",
@@ -290,10 +294,7 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: makeNumberedImages("/habitacion%238", 14),
-    videoUrl: cloudVideo(
-      "vistadelarosa/habitacion8/bloque_8",
-      "/habitacion%238/bloque%208%20.MP4",
-    ),
+    videoUrl: youtubeVillaVideo(8),
   },
 ];
 

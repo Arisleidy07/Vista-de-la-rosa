@@ -248,17 +248,31 @@ function Gallery({
     <div className="villa-gallery">
       <div className="villa-gallery-main">
         {active.type === "video" ? (
-          <video
-            src={active.src}
-            className="villa-gallery-main-image"
-            controls
-            playsInline
-            preload="metadata"
-            poster={active.thumb || undefined}
-            onClick={() =>
-              onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
-            }
-          />
+          active.src && String(active.src).includes("youtube") ? (
+            <iframe
+              src={active.src}
+              className="villa-gallery-main-image"
+              title="Villa video"
+              frameBorder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              onClick={() =>
+                onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
+              }
+            />
+          ) : (
+            <video
+              src={active.src}
+              className="villa-gallery-main-image"
+              controls
+              playsInline
+              preload="metadata"
+              poster={active.thumb || undefined}
+              onClick={() =>
+                onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
+              }
+            />
+          )
         ) : (
           <img
             src={active.src}
