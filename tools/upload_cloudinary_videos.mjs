@@ -52,7 +52,6 @@ async function uploadVideo({ filePath, publicId }) {
 
   const paramsToSign = {
     public_id: publicId,
-    resource_type: "video",
     timestamp: String(timestamp),
   };
 
@@ -94,7 +93,9 @@ async function main() {
 
   for (const filePath of all) {
     const publicId = toPublicId(filePath);
-    console.log(`Uploading: ${path.relative(publicDir, filePath)} => ${publicId}`);
+    console.log(
+      `Uploading: ${path.relative(publicDir, filePath)} => ${publicId}`,
+    );
     const result = await uploadVideo({ filePath, publicId });
     console.log(`OK: ${result.secure_url}`);
   }
