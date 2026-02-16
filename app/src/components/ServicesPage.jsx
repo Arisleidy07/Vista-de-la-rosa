@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Lightbox from "./Lightbox";
+import { cloudinaryVideoUrl } from "../data/cloudinary";
 
 const services = [
   {
@@ -78,11 +79,21 @@ const serviceImages = {
   billar: ["/billar/2.JPG", "/billar/3.JPG"],
 };
 
+const useCloudinary = Boolean(import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
+
 const serviceVideos = {
-  piscina: "/piscina/piscina.MP4",
-  jacuzzi: "/jacuzzi/jacuzzi.MP4",
-  sala: "/area%20de%20DESCANSO/estar.MP4",
-  billar: "/billar/1.MP4",
+  piscina: useCloudinary
+    ? cloudinaryVideoUrl("vistadelarosa/piscina/piscina")
+    : "/piscina/piscina.MP4",
+  jacuzzi: useCloudinary
+    ? cloudinaryVideoUrl("vistadelarosa/jacuzzi/jacuzzi")
+    : "/jacuzzi/jacuzzi.MP4",
+  sala: useCloudinary
+    ? cloudinaryVideoUrl("vistadelarosa/area_de_DESCANSO/estar")
+    : "/area%20de%20DESCANSO/estar.MP4",
+  billar: useCloudinary
+    ? cloudinaryVideoUrl("vistadelarosa/billar/1")
+    : "/billar/1.MP4",
 };
 
 function withBaseUrl(src) {

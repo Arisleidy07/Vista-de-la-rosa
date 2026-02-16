@@ -1,10 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { cloudinaryVideoUrl } from "../data/cloudinary";
 
 export default function HomePage() {
   const assetBase =
     import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
-  const introSrc = `${assetBase}intro.MP4`;
+  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || "";
+  const introSrc = cloudName
+    ? cloudinaryVideoUrl("vistadelarosa/intro")
+    : `${assetBase}intro.MP4`;
 
   return (
     <section className="hero">
