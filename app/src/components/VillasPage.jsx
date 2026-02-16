@@ -178,9 +178,6 @@ function Gallery({
   onChangeIndex,
   onOpenLightbox,
 }) {
-  const [isVideoLoading, setIsVideoLoading] = useState(false);
-  const [videoError, setVideoError] = useState(false);
-
   const media = [
     ...(videoUrl
       ? [
@@ -236,16 +233,6 @@ function Gallery({
   }, [media.length]);
 
   useEffect(() => {
-    if (active?.type !== "video") {
-      setIsVideoLoading(false);
-      setVideoError(false);
-      return;
-    }
-    setIsVideoLoading(true);
-    setVideoError(false);
-  }, [active?.type, active?.src]);
-
-  useEffect(() => {
     const handleResize = () => updateThumbScrollState();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -261,42 +248,17 @@ function Gallery({
     <div className="villa-gallery">
       <div className="villa-gallery-main">
         {active.type === "video" ? (
-          <div
-            className="video-frame"
+          <video
+            src={active.src}
+            className="villa-gallery-main-image"
+            controls
+            playsInline
+            preload="metadata"
+            poster={active.thumb || undefined}
             onClick={() =>
               onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
             }
-          >
-            <video
-              src={active.src}
-              className="villa-gallery-main-image"
-              controls
-              playsInline
-              preload="metadata"
-              poster={active.thumb || undefined}
-              onLoadStart={() => setIsVideoLoading(true)}
-              onLoadedData={() => setIsVideoLoading(false)}
-              onError={() => {
-                setIsVideoLoading(false);
-                setVideoError(true);
-              }}
-            />
-            {(isVideoLoading || videoError) && (
-              <div className="video-overlay" aria-live="polite">
-                {isVideoLoading && (
-                  <div className="video-overlay-inner">
-                    <span className="video-spinner" aria-hidden="true" />
-                    <span>Cargando video…</span>
-                  </div>
-                )}
-                {videoError && (
-                  <div className="video-overlay-inner">
-                    <span>No se pudo cargar el video.</span>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
+          />
         ) : (
           <img
             src={active.src}
