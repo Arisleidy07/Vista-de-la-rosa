@@ -161,7 +161,7 @@ function ServiceGallery({ serviceKey, onOpenLightbox }) {
         {active.type === "video" ? (
           <iframe
             src={active.src}
-            className="service-gallery-image"
+            className="service-gallery-image yt-embed"
             title={`${serviceKey} video`}
             frameBorder="0"
             allow="autoplay; encrypted-media; picture-in-picture"

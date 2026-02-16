@@ -251,7 +251,7 @@ function Gallery({
           active.src && String(active.src).includes("youtube") ? (
             <iframe
               src={active.src}
-              className="villa-gallery-main-image"
+              className="villa-gallery-main-image yt-embed"
               title="Villa video"
               frameBorder="0"
               allow="autoplay; encrypted-media; picture-in-picture"

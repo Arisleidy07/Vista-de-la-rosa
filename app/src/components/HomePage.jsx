@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <section className="hero">
       <iframe
-        className="hero-video"
+        className="hero-video yt-embed"
         src={introEmbed}
         title="Vista de la Rosa"
         frameBorder="0"

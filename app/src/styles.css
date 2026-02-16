@@ -1682,6 +1682,16 @@ body {
   display: block;
 }
 
+.yt-embed {
+  border: 0;
+}
+
+/* En tarjetas/galerías, el iframe puede bloquear el click. */
+.service-gallery-image.yt-embed,
+.villa-gallery-main-image.yt-embed {
+  pointer-events: none;
+}
+
 .service-gallery-arrow {
   position: absolute;
   top: 50%;

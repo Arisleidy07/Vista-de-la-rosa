@@ -44,6 +44,9 @@ export function getYouTubeEmbedUrl(input, options = {}) {
   const params = new URLSearchParams();
   params.set("modestbranding", "1");
   params.set("rel", "0");
+  params.set("iv_load_policy", "3");
+  params.set("disablekb", "1");
+  params.set("fs", "0");
   params.set("playsinline", playsInline ? "1" : "0");
   params.set("controls", controls ? "1" : "0");
 
