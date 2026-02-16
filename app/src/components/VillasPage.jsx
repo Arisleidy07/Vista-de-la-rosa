@@ -358,7 +358,7 @@ function VillaDetailsModal({ villa, onClose }) {
   const message = encodeURIComponent(
     `Hola, quiero reservar la ${villa.title} en Vista de la Rosa`,
   );
-  const phone = WHATSAPP_NUMBER;
+  const phone = WHATSAPP_NUMBER || "18093233496";
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
 
   return (

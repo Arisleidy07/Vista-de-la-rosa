@@ -2,20 +2,15 @@ import React from "react";
 import { WHATSAPP_NUMBER } from "../data/villas";
 
 export default function ContactPage() {
-  const primaryRaw = WHATSAPP_NUMBER;
-  const primaryDisplay = "829 341 0707";
-  const secondaryRaw = "18296511212";
-  const secondaryDisplay = "829 651 1212";
+  const phoneRaw = WHATSAPP_NUMBER || "18093233496";
+  const phoneDisplay = "809 323 3496";
 
   const assetBase =
     import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
   const whatsappIconSrc = `${assetBase}ws.png`;
 
-  const handleWhatsAppPrimaryClick = () =>
-    window.open(`https://wa.me/${primaryRaw}`, "_blank");
-
-  const handleWhatsAppSecondaryClick = () =>
-    window.open(`https://wa.me/${secondaryRaw}`, "_blank");
+  const handleWhatsAppClick = () =>
+    window.open(`https://wa.me/${phoneRaw}`, "_blank");
 
   return (
     <section className="section contact-page">
@@ -30,13 +25,8 @@ export default function ContactPage() {
           <div className="contact-info">
             <p className="contact-label">Teléfono / WhatsApp</p>
             <p className="contact-phone">
-              <a href={`tel:+${primaryRaw}`} className="contact-link">
-                {primaryDisplay}
-              </a>
-            </p>
-            <p className="contact-phone">
-              <a href={`tel:+${secondaryRaw}`} className="contact-link">
-                {secondaryDisplay}
+              <a href={`tel:+${phoneRaw}`} className="contact-link">
+                {phoneDisplay}
               </a>
             </p>
             <p className="contact-note">
@@ -48,24 +38,7 @@ export default function ContactPage() {
             <button
               type="button"
               className="btn btn-primary contact-main-btn"
-              onClick={handleWhatsAppPrimaryClick}
-            >
-              <img
-                src={whatsappIconSrc}
-                alt="WhatsApp"
-                style={{
-                  width: "1.3rem",
-                  height: "1.3rem",
-                  marginRight: "0.5rem",
-                }}
-              />
-              WhatsApp
-            </button>
-
-            <button
-              type="button"
-              className="btn btn-primary contact-main-btn"
-              onClick={handleWhatsAppSecondaryClick}
+              onClick={handleWhatsAppClick}
             >
               <img
                 src={whatsappIconSrc}

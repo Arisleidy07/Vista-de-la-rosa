@@ -1,7 +1,7 @@
 // Vista de la Rosa Jarabacoa - Frontend UI/UX
 // COMENTARIO: Reemplaza WHATSAPP_NUMBER con tu número real en formato internacional sin + ni espacios. Ej: 18295551234
 // Para Vista de la Rosa: 1 (809) 323-3496 → 18093233496
-const WHATSAPP_NUMBER = "18293410707";
+const WHATSAPP_NUMBER = "18093233496";
 
 // COMENTARIO: Puedes reemplazar estas URLs por tus imágenes reales. Pueden ser rutas locales o URLs absolutas.
 const placeholderImages = [
@@ -970,7 +970,7 @@ function openDetails(id) {
     const message = encodeURIComponent(
       `Hola, quiero reservar la Villa ${villa.title} en Vista de la Rosa`,
     );
-    const phone = WHATSAPP_NUMBER;
+    const phone = WHATSAPP_NUMBER || "18093233496";
     reserveBtn.href = `https://wa.me/${phone}?text=${message}`;
   }
 }

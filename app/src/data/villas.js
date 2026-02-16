@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "18293410707";
+export const WHATSAPP_NUMBER = "18093233496";
 
 const useCloudinary = Boolean(import.meta.env?.VITE_CLOUDINARY_CLOUD_NAME);
 const cloudName = useCloudinary
