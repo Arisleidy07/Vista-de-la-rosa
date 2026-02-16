@@ -5,6 +5,8 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
   const [index, setIndex] = useState(initialIndex || 0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [isVideoLoading, setIsVideoLoading] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     setIndex(initialIndex || 0);
@@ -14,6 +16,16 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
 
   const safeIndex = Math.max(0, Math.min(index, items.length - 1));
   const active = items[safeIndex];
+
+  useEffect(() => {
+    if (active?.type !== "video") {
+      setIsVideoLoading(false);
+      setVideoError(false);
+      return;
+    }
+    setIsVideoLoading(true);
+    setVideoError(false);
+  }, [active?.type, active?.src]);
   const countLabel =
     items.length > 1 ? `${safeIndex + 1} / ${items.length}` : null;
 
@@ -151,15 +163,38 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
           onTouchEnd={onTouchEnd}
         >
           {active.type === "video" ? (
-            <video
-              src={active.src}
-              className="lightbox-main-media"
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-              poster={active.thumb || undefined}
-            />
+            <div className="video-frame">
+              <video
+                src={active.src}
+                className="lightbox-main-media"
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+                poster={active.thumb || undefined}
+                onLoadStart={() => setIsVideoLoading(true)}
+                onLoadedData={() => setIsVideoLoading(false)}
+                onError={() => {
+                  setIsVideoLoading(false);
+                  setVideoError(true);
+                }}
+              />
+              {(isVideoLoading || videoError) && (
+                <div className="video-overlay" aria-live="polite">
+                  {isVideoLoading && (
+                    <div className="video-overlay-inner">
+                      <span className="video-spinner" aria-hidden="true" />
+                      <span>Cargando video…</span>
+                    </div>
+                  )}
+                  {videoError && (
+                    <div className="video-overlay-inner">
+                      <span>No se pudo cargar el video.</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           ) : (
             <img
               src={active.src}

@@ -108,10 +108,13 @@ function withBaseUrl(src) {
 
 function ServiceGallery({ serviceKey, onOpenLightbox }) {
   const [index, setIndex] = useState(0);
+  const [isVideoLoading, setIsVideoLoading] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const images = (serviceImages[serviceKey] || []).map((src) =>
     withBaseUrl(src),
   );
   const video = withBaseUrl(serviceVideos[serviceKey]);
+  const videoPoster = images[0] || null;
 
   const media = [
     ...(video ? [{ type: "video", src: video }] : []),
@@ -122,6 +125,16 @@ function ServiceGallery({ serviceKey, onOpenLightbox }) {
 
   const safeIndex = Math.max(0, Math.min(index, media.length - 1));
   const active = media[safeIndex];
+
+  React.useEffect(() => {
+    if (active?.type !== "video") {
+      setIsVideoLoading(false);
+      setVideoError(false);
+      return;
+    }
+    setIsVideoLoading(true);
+    setVideoError(false);
+  }, [active?.type, active?.src]);
 
   const goPrev = () => {
     setIndex((prev) => (prev - 1 + media.length) % media.length);
@@ -145,13 +158,37 @@ function ServiceGallery({ serviceKey, onOpenLightbox }) {
         onClick={() => onOpenLightbox && onOpenLightbox(0)}
       >
         {active.type === "video" ? (
-          <video
-            src={active.src}
-            className="service-gallery-image"
-            controls
-            playsInline
-            preload="metadata"
-          />
+          <div className="video-frame">
+            <video
+              src={active.src}
+              className="service-gallery-image"
+              controls
+              playsInline
+              preload="metadata"
+              poster={videoPoster || undefined}
+              onLoadStart={() => setIsVideoLoading(true)}
+              onLoadedData={() => setIsVideoLoading(false)}
+              onError={() => {
+                setIsVideoLoading(false);
+                setVideoError(true);
+              }}
+            />
+            {(isVideoLoading || videoError) && (
+              <div className="video-overlay" aria-live="polite">
+                {isVideoLoading && (
+                  <div className="video-overlay-inner">
+                    <span className="video-spinner" aria-hidden="true" />
+                    <span>Cargando video…</span>
+                  </div>
+                )}
+                {videoError && (
+                  <div className="video-overlay-inner">
+                    <span>No se pudo cargar el video.</span>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         ) : (
           <img
             src={active.src}

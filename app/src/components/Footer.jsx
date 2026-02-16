@@ -8,6 +8,11 @@ export default function Footer() {
     import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
   const logoSrc = `${assetBase}villa.PNG`;
 
+  const primaryRaw = "18293410707";
+  const primaryDisplay = "829 341 0707";
+  const secondaryRaw = "18296511212";
+  const secondaryDisplay = "829 651 1212";
+
   return (
     <footer className="app-footer">
       <div className="footer-inner">
@@ -47,8 +52,11 @@ export default function Footer() {
           <div className="footer-text-line">
             Jarabacoa, La Vega, República Dominicana
           </div>
-          <a href="tel:+18093233496" className="footer-link">
-            809 323 3496
+          <a href={`tel:+${primaryRaw}`} className="footer-link">
+            {primaryDisplay}
+          </a>
+          <a href={`tel:+${secondaryRaw}`} className="footer-link">
+            {secondaryDisplay}
           </a>
         </div>
       </div>
