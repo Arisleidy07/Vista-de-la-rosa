@@ -8,7 +8,7 @@ const cloudName = useCloudinary
 function cloudVideo(publicId, fallback) {
   if (!cloudName) return fallback;
   const normalized = publicId.startsWith("/") ? publicId.slice(1) : publicId;
-  return `https://res.cloudinary.com/${cloudName}/video/upload/${normalized}.mp4`;
+  return `https://res.cloudinary.com/${cloudName}/video/upload/f_mp4/${normalized}`;
 }
 
 export const blockDetailConfig = {

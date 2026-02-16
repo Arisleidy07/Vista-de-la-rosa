@@ -47,6 +47,10 @@ function sha1(input) {
   return crypto.createHash("sha1").update(input).digest("hex");
 }
 
+function randomUploadId() {
+  return crypto.randomBytes(12).toString("hex");
+}
+
 async function uploadVideo({ filePath, publicId }) {
   const timestamp = Math.floor(Date.now() / 1000);
 
@@ -63,6 +67,57 @@ async function uploadVideo({ filePath, publicId }) {
   const signature = sha1(signatureBase + API_SECRET);
 
   const url = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`;
+
+  const stat = await fs.promises.stat(filePath);
+  const fileSize = stat.size;
+
+  // Si el archivo es grande, subimos por chunks para evitar 413
+  const CHUNK_SIZE = 20 * 1024 * 1024; // 20MB
+  if (fileSize > CHUNK_SIZE) {
+    const uploadId = randomUploadId();
+    const handle = await fs.promises.open(filePath, "r");
+    try {
+      let offset = 0;
+      let lastJson = null;
+
+      while (offset < fileSize) {
+        const endExclusive = Math.min(offset + CHUNK_SIZE, fileSize);
+        const length = endExclusive - offset;
+        const buffer = Buffer.allocUnsafe(length);
+        await handle.read(buffer, 0, length, offset);
+
+        const blob = new Blob([buffer], { type: "video/mp4" });
+        const form = new FormData();
+        form.set("file", blob, path.basename(filePath));
+        form.set("api_key", API_KEY);
+        form.set("timestamp", String(timestamp));
+        form.set("public_id", publicId);
+        form.set("signature", signature);
+
+        const contentRange = `bytes ${offset}-${endExclusive - 1}/${fileSize}`;
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Range": contentRange,
+            "X-Unique-Upload-Id": uploadId,
+          },
+          body: form,
+        });
+
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Upload failed (${res.status}): ${text}`);
+        }
+
+        lastJson = await res.json();
+        offset = endExclusive;
+      }
+
+      return lastJson;
+    } finally {
+      await handle.close();
+    }
+  }
 
   const fileBuffer = await fs.promises.readFile(filePath);
   const fileBlob = new Blob([fileBuffer], { type: "video/mp4" });
