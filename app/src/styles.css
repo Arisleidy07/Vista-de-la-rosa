@@ -570,8 +570,12 @@ body {
   .mobile-nav-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(15, 18, 16, 0.55);
-    backdrop-filter: blur(3px);
+    background: radial-gradient(
+      circle at top,
+      rgba(194, 163, 107, 0.22),
+      rgba(15, 18, 16, 0.72)
+    );
+    backdrop-filter: blur(6px);
     border: 0;
     padding: 0;
     display: none;
@@ -588,8 +592,16 @@ body {
     right: 0;
     height: 100dvh;
     width: min(86vw, 360px);
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: -18px 0 50px rgba(0, 0, 0, 0.22);
+    background: linear-gradient(
+      165deg,
+      rgba(255, 255, 255, 0.72) 0%,
+      rgba(255, 255, 255, 0.52) 100%
+    );
+    border-left: 1px solid rgba(194, 163, 107, 0.35);
+    box-shadow:
+      -22px 0 55px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(14px);
     transform: translateX(110%);
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
@@ -607,7 +619,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0.35rem 0.25rem 0.75rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(194, 163, 107, 0.25);
     margin-bottom: 0.75rem;
   }
 
@@ -621,8 +633,8 @@ body {
     width: 42px;
     height: 42px;
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background: rgba(27, 58, 42, 0.04);
+    border: 1px solid rgba(194, 163, 107, 0.35);
+    background: rgba(255, 255, 255, 0.35);
     font-size: 1.6rem;
     line-height: 1;
     color: rgba(46, 42, 39, 0.9);
@@ -644,7 +656,7 @@ body {
   }
 
   .mobile-nav-drawer .app-nav-link {
-    color: var(--forest);
+    color: rgba(27, 58, 42, 0.92);
     padding: 0.9rem 1rem;
     border-radius: 16px;
     transition:
@@ -657,8 +669,11 @@ body {
     width: 100%;
     display: block;
     text-align: left;
-    background: rgba(27, 58, 42, 0.04);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.38);
+    border: 1px solid rgba(194, 163, 107, 0.22);
+    box-shadow:
+      0 10px 22px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
   }
 
   .mobile-nav-drawer .app-nav-link::before {
@@ -679,7 +694,7 @@ body {
   }
 
   .mobile-nav-drawer .app-nav-link:hover {
-    background: rgba(27, 58, 42, 0.08);
+    background: rgba(194, 163, 107, 0.14);
     color: var(--forest-700);
     transform: none;
     box-shadow: none;
@@ -693,11 +708,15 @@ body {
     background: linear-gradient(
       135deg,
       var(--forest) 0%,
-      var(--forest-700) 100%
+      var(--forest-700) 70%,
+      rgba(194, 163, 107, 0.85) 140%
     );
     color: #ffffff;
     font-weight: 600;
-    box-shadow: 0 12px 26px rgba(27, 58, 42, 0.18);
+    border: 1px solid rgba(194, 163, 107, 0.55);
+    box-shadow:
+      0 18px 36px rgba(27, 58, 42, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
   }
 
   .mobile-nav-drawer .app-nav-link.active::before {
