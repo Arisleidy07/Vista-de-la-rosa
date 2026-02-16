@@ -11,7 +11,9 @@ import WhatsAppButton from "./components/WhatsAppButton";
 function Layout({ children }) {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
 
-  const logoSrc = `${import.meta.env.BASE_URL}villa.PNG`;
+  const assetBase =
+    import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
+  const logoSrc = `${assetBase}villa.PNG`;
 
   const handleNavLinkClick = () => {
     setIsNavOpen(false);

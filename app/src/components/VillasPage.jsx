@@ -23,10 +23,12 @@ const AMENITY_ICON = {
 };
 
 function withBaseUrl(src) {
+  const assetBase =
+    import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
   if (!src) return src;
   if (src.startsWith("http://") || src.startsWith("https://")) return src;
   if (src.startsWith("data:")) return src;
-  if (src.startsWith("/")) return `${import.meta.env.BASE_URL}${src.slice(1)}`;
+  if (src.startsWith("/")) return `${assetBase}${src.slice(1)}`;
   return src;
 }
 

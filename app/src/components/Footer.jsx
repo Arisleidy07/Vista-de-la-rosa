@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  const logoSrc = `${import.meta.env.BASE_URL}villa.PNG`;
+  const assetBase =
+    import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
+  const logoSrc = `${assetBase}villa.PNG`;
 
   return (
     <footer className="app-footer">

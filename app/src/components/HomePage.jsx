@@ -2,7 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
-  const introSrc = `${import.meta.env.BASE_URL}intro.MP4`;
+  const assetBase =
+    import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
+  const introSrc = `${assetBase}intro.MP4`;
 
   return (
     <section className="hero">
@@ -24,7 +26,7 @@ export default function HomePage() {
         </p>
         <div className="hero-actions">
           <NavLink to="/villas" className="btn btn-primary">
-            Reserva tu villa
+            Ver Villas
           </NavLink>
           <NavLink to="/contacto" className="btn btn-outline">
             Contáctanos
