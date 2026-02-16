@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { getYouTubeEmbedUrl } from "../youtube";
 
 // Lightbox genérico para imágenes y videos, reutilizable en villas y servicios
 export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
@@ -14,6 +15,21 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
 
   const safeIndex = Math.max(0, Math.min(index, items.length - 1));
   const active = items[safeIndex];
+
+  const lightboxYouTubeSrc =
+    active?.type === "video" &&
+    active?.src &&
+    String(active.src).includes("youtube")
+      ? getYouTubeEmbedUrl(active.src, {
+          autoplay: false,
+          muted: false,
+          loop: false,
+          controls: true,
+          playsInline: true,
+          fs: true,
+          disablekb: false,
+        })
+      : null;
 
   const countLabel =
     items.length > 1 ? `${safeIndex + 1} / ${items.length}` : null;
@@ -154,7 +170,7 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
           {active.type === "video" ? (
             active.src && String(active.src).includes("youtube") ? (
               <iframe
-                src={active.src}
+                src={lightboxYouTubeSrc || active.src}
                 className="lightbox-main-media"
                 title={active.alt || "Video"}
                 frameBorder="0"

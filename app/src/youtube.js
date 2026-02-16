@@ -39,14 +39,16 @@ export function getYouTubeEmbedUrl(input, options = {}) {
     loop = false,
     controls = false,
     playsInline = true,
+    fs = false,
+    disablekb = true,
   } = options;
 
   const params = new URLSearchParams();
   params.set("modestbranding", "1");
   params.set("rel", "0");
   params.set("iv_load_policy", "3");
-  params.set("disablekb", "1");
-  params.set("fs", "0");
+  params.set("disablekb", disablekb ? "1" : "0");
+  params.set("fs", fs ? "1" : "0");
   params.set("playsinline", playsInline ? "1" : "0");
   params.set("controls", controls ? "1" : "0");
 

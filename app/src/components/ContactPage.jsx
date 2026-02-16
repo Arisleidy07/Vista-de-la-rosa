@@ -59,7 +59,7 @@ export default function ContactPage() {
                   marginRight: "0.5rem",
                 }}
               />
-              WhatsApp
+              {primaryDisplay}
             </button>
 
             <button
@@ -76,7 +76,7 @@ export default function ContactPage() {
                   marginRight: "0.5rem",
                 }}
               />
-              WhatsApp
+              {secondaryDisplay}
             </button>
           </div>
         </div>

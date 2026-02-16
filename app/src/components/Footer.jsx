@@ -7,6 +7,7 @@ export default function Footer() {
   const assetBase =
     import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
   const logoSrc = `${assetBase}villa.PNG`;
+  const whatsappIconSrc = `${assetBase}ws.png`;
 
   const primaryRaw = "18293410707";
   const primaryDisplay = "829 341 0707";
@@ -52,12 +53,44 @@ export default function Footer() {
           <div className="footer-text-line">
             Jarabacoa, La Vega, República Dominicana
           </div>
-          <a href={`tel:+${primaryRaw}`} className="footer-link">
-            {primaryDisplay}
-          </a>
-          <a href={`tel:+${secondaryRaw}`} className="footer-link">
-            {secondaryDisplay}
-          </a>
+          <div className="footer-text-line">
+            <a
+              href={`https://wa.me/${primaryRaw}`}
+              className="footer-link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={whatsappIconSrc}
+                alt="WhatsApp"
+                style={{
+                  width: "1.05rem",
+                  height: "1.05rem",
+                  marginRight: "0.45rem",
+                }}
+              />
+              {primaryDisplay}
+            </a>
+          </div>
+          <div className="footer-text-line">
+            <a
+              href={`https://wa.me/${secondaryRaw}`}
+              className="footer-link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={whatsappIconSrc}
+                alt="WhatsApp"
+                style={{
+                  width: "1.05rem",
+                  height: "1.05rem",
+                  marginRight: "0.45rem",
+                }}
+              />
+              {secondaryDisplay}
+            </a>
+          </div>
         </div>
       </div>
       <div className="footer-bottom">
