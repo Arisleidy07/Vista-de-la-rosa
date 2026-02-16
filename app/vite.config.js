@@ -6,6 +6,11 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const repoName = process.env.GITHUB_REPOSITORY
+  ? process.env.GITHUB_REPOSITORY.split("/")[1]
+  : "";
+const base = repoName ? `/${repoName}/` : "/";
+
 function getContentType(filePath) {
   const ext = path.extname(filePath).toLowerCase();
   if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg";
@@ -14,6 +19,7 @@ function getContentType(filePath) {
 }
 
 export default defineConfig({
+  base,
   plugins: [
     react(),
     {

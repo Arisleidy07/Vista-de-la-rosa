@@ -11,6 +11,8 @@ import WhatsAppButton from "./components/WhatsAppButton";
 function Layout({ children }) {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
 
+  const logoSrc = `${import.meta.env.BASE_URL}villa.PNG`;
+
   const handleNavLinkClick = () => {
     setIsNavOpen(false);
   };
@@ -22,7 +24,7 @@ function Layout({ children }) {
           <div className="app-navbar-brand">
             <NavLink to="/" className="brand-link" onClick={handleNavLinkClick}>
               <img
-                src="/villa.PNG"
+                src={logoSrc}
                 alt="Vista de la Rosa logo"
                 className="brand-logo"
               />

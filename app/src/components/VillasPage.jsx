@@ -22,6 +22,14 @@ const AMENITY_ICON = {
   Abanico: "bi-fan",
 };
 
+function withBaseUrl(src) {
+  if (!src) return src;
+  if (src.startsWith("http://") || src.startsWith("https://")) return src;
+  if (src.startsWith("data:")) return src;
+  if (src.startsWith("/")) return `${import.meta.env.BASE_URL}${src.slice(1)}`;
+  return src;
+}
+
 function getGalleryForSelection(villa, selectionKey) {
   const cfg = blockDetailConfig[villa.block] || {};
   const variants = cfg.variants || null;
@@ -168,8 +176,8 @@ function Gallery({
   onOpenLightbox,
 }) {
   const media = [
-    ...(videoUrl ? [{ type: "video", src: videoUrl }] : []),
-    ...(images || []).map((src) => ({ type: "image", src })),
+    ...(videoUrl ? [{ type: "video", src: withBaseUrl(videoUrl) }] : []),
+    ...(images || []).map((src) => ({ type: "image", src: withBaseUrl(src) })),
   ];
 
   if (!media.length) return null;

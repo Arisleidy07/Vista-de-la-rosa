@@ -85,10 +85,20 @@ const serviceVideos = {
   billar: "/billar/1.MP4",
 };
 
+function withBaseUrl(src) {
+  if (!src) return src;
+  if (src.startsWith("http://") || src.startsWith("https://")) return src;
+  if (src.startsWith("data:")) return src;
+  if (src.startsWith("/")) return `${import.meta.env.BASE_URL}${src.slice(1)}`;
+  return src;
+}
+
 function ServiceGallery({ serviceKey, onOpenLightbox }) {
   const [index, setIndex] = useState(0);
-  const images = serviceImages[serviceKey] || [];
-  const video = serviceVideos[serviceKey];
+  const images = (serviceImages[serviceKey] || []).map((src) =>
+    withBaseUrl(src),
+  );
+  const video = withBaseUrl(serviceVideos[serviceKey]);
 
   const media = [
     ...(video ? [{ type: "video", src: video }] : []),
