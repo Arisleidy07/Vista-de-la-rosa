@@ -244,9 +244,14 @@ function Gallery({
     onChangeIndex(nextIndex);
   };
 
+  const handleOpen = () => {
+    if (!onOpenLightbox) return;
+    onOpenLightbox(Math.max(0, safeIndex));
+  };
+
   return (
     <div className="villa-gallery">
-      <div className="villa-gallery-main">
+      <div className="villa-gallery-main" onClick={handleOpen}>
         {active.type === "video" ? (
           active.src && String(active.src).includes("youtube") ? (
             <iframe
@@ -256,9 +261,6 @@ function Gallery({
               frameBorder="0"
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
-              onClick={() =>
-                onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
-              }
             />
           ) : (
             <video
@@ -268,9 +270,6 @@ function Gallery({
               playsInline
               preload="metadata"
               poster={active.thumb || undefined}
-              onClick={() =>
-                onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
-              }
             />
           )
         ) : (
@@ -278,9 +277,6 @@ function Gallery({
             src={active.src}
             alt={`Imagen ${safeIndex + 1}`}
             className="villa-gallery-main-image"
-            onClick={() =>
-              onOpenLightbox && onOpenLightbox(Math.max(0, safeIndex))
-            }
           />
         )}
 
@@ -289,7 +285,10 @@ function Gallery({
             <button
               type="button"
               className="villa-gallery-arrow villa-gallery-prev"
-              onClick={handlePrev}
+              onClick={(event) => {
+                event.stopPropagation();
+                handlePrev();
+              }}
               aria-label="Imagen anterior"
             >
               ←
@@ -297,7 +296,10 @@ function Gallery({
             <button
               type="button"
               className="villa-gallery-arrow villa-gallery-next"
-              onClick={handleNext}
+              onClick={(event) => {
+                event.stopPropagation();
+                handleNext();
+              }}
               aria-label="Imagen siguiente"
             >
               →
