@@ -145,6 +145,8 @@ function VillaCard({ villa, onOpen }) {
             src={mainImage}
             alt={`Villa ${villa.number}`}
             className="villa-card-image"
+            loading="lazy"
+            decoding="async"
             onClick={onOpen}
           />
         )}
@@ -277,6 +279,8 @@ function Gallery({
             src={active.src}
             alt={`Imagen ${safeIndex + 1}`}
             className="villa-gallery-main-image"
+            loading="lazy"
+            decoding="async"
           />
         )}
 
@@ -337,7 +341,12 @@ function Gallery({
                   <span>▶</span>
                 </div>
               ) : (
-                <img src={item.src} alt={`Miniatura ${idx + 1}`} />
+                <img
+                  src={item.src}
+                  alt={`Miniatura ${idx + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                />
               )}
             </button>
           ))}
@@ -453,6 +462,8 @@ function VillaDetailsModal({ villa, onClose }) {
                               <img
                                 src={withBaseUrl(coverThumb)}
                                 alt="Ver bloque completo"
+                                loading="lazy"
+                                decoding="async"
                               />
                             ) : (
                               <span className="variant-thumb-fallback" />
@@ -486,6 +497,8 @@ function VillaDetailsModal({ villa, onClose }) {
                                 <img
                                   src={withBaseUrl(variants.a.thumb)}
                                   alt={variants.a.label}
+                                  loading="lazy"
+                                  decoding="async"
                                 />
                               ) : (
                                 <span className="variant-thumb-fallback" />
@@ -518,6 +531,8 @@ function VillaDetailsModal({ villa, onClose }) {
                                 <img
                                   src={withBaseUrl(variants.b.thumb)}
                                   alt={variants.b.label}
+                                  loading="lazy"
+                                  decoding="async"
                                 />
                               ) : (
                                 <span className="variant-thumb-fallback" />

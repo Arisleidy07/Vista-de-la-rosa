@@ -20,6 +20,7 @@ export default function HomePage() {
         frameBorder="0"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowFullScreen
+        loading="lazy"
       />
       <div className="hero-overlay" />
       <div className="hero-content">
