@@ -133,12 +133,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .whatsapp-float-button {
-    width: 56px;
-    height: 56px;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    font-size: 1.8rem;
+  .modal-panel {
+    overflow-y: auto;
   }
 }
 
