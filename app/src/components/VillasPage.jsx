@@ -658,6 +658,17 @@ export default function VillasPage() {
   const [selectedBlock, setSelectedBlock] = useState("todos");
   const [activeVilla, setActiveVilla] = useState(null);
 
+  useEffect(() => {
+    if (activeVilla) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeVilla]);
+
   const filteredVillas = useMemo(() => {
     if (selectedBlock === "todos") return villas;
     return villas.filter((v) => String(v.block) === selectedBlock);

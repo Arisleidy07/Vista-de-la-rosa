@@ -136,6 +136,9 @@ body {
   .modal-panel {
     overflow-y: auto;
   }
+  .villa-modal-body {
+    overflow-y: auto;
+  }
 }
 
 .app-nav-links {
