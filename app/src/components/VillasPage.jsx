@@ -150,7 +150,6 @@ function VillaCard({ villa, onOpen }) {
             onClick={onOpen}
           />
         )}
-        <span className="villa-chip">Bloque {villa.block}</span>
         <span className="villa-price-chip">${villa.price} / noche</span>
       </div>
       <div className="villa-card-body">
@@ -506,7 +505,6 @@ function VillaDetailsModal({ villa, onClose }) {
                             </span>
                             <span className="variant-label">
                               {variants.a.label}
-                              <span className="variant-meta">Galería A</span>
                             </span>
                           </button>,
                         );
@@ -540,7 +538,6 @@ function VillaDetailsModal({ villa, onClose }) {
                             </span>
                             <span className="variant-label">
                               {variants.b.label}
-                              <span className="variant-meta">Galería B</span>
                             </span>
                           </button>,
                         );
