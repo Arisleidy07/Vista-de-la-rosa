@@ -176,6 +176,7 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
                 frameBorder="0"
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
+                loading="lazy"
               />
             ) : (
               <video
@@ -193,6 +194,8 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
               src={active.src}
               alt={active.alt || "Imagen"}
               className="lightbox-main-media"
+              loading="lazy"
+              decoding="async"
             />
           )}
 
