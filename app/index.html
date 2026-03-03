@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vista de la Rosa Jarabacoa</title>
     <link rel="icon" type="image/png" href="/villa.PNG" />
+
+    <!-- Preload recursos críticos -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      as="style"
+    />
+    <link rel="preload" href="/src/styles.css" as="style" />
+
+    <!-- DNS prefetch para recursos externos -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="//www.youtube.com" />
+    <link rel="dns-prefetch" href="//img.youtube.com" />
+
+    <!-- Preconnect para recursos críticos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin />
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -16,7 +41,32 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
       rel="stylesheet"
     />
+
+    <!-- Optimización de rendimiento -->
+    <meta name="theme-color" content="#1b3a2a" />
+    <meta name="msapplication-TileColor" content="#1b3a2a" />
+    <meta
+      name="description"
+      content="Villas privadas con amenidades premium en Jarabacoa. Tu escape perfecto en las montañas."
+    />
+
     <script>
+      // Optimización de carga crítica
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          // Service worker para cache futuro (opcional)
+        });
+      }
+
+      // Prevenir layout shift
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          document.body.style.transition = "opacity 0.3s ease";
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+
       (function (l) {
         if (l.search && l.search.startsWith("?/") && l.search.length > 2) {
           var decoded = l.search

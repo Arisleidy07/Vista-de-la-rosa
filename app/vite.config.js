@@ -11,7 +11,9 @@ const repoName = process.env.GITHUB_REPOSITORY
   : "";
 const isGitHubPagesBuild =
   process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS === "true";
-const base = isGitHubPagesBuild && repoName ? `/${repoName}/` : "/";
+const isVercelBuild = process.env.VERCEL === "1";
+const base =
+  isGitHubPagesBuild && repoName ? `/${repoName}/` : isVercelBuild ? "/" : "/";
 
 function getContentType(filePath) {
   const ext = path.extname(filePath).toLowerCase();
