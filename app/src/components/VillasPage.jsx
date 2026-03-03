@@ -145,7 +145,7 @@ function VillaCard({ villa, onOpen }) {
             src={mainImage}
             alt={`Villa ${villa.number}`}
             className="villa-card-image"
-            loading="lazy"
+            loading="eager"
             decoding="async"
             onClick={onOpen}
           />
@@ -278,7 +278,7 @@ function Gallery({
             src={active.src}
             alt={`Imagen ${safeIndex + 1}`}
             className="villa-gallery-main-image"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         )}
@@ -343,7 +343,7 @@ function Gallery({
                 <img
                   src={item.src}
                   alt={`Miniatura ${idx + 1}`}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                 />
               )}
@@ -461,7 +461,7 @@ function VillaDetailsModal({ villa, onClose }) {
                               <img
                                 src={withBaseUrl(coverThumb)}
                                 alt="Ver bloque completo"
-                                loading="lazy"
+                                loading="eager"
                                 decoding="async"
                               />
                             ) : (
@@ -496,7 +496,7 @@ function VillaDetailsModal({ villa, onClose }) {
                                 <img
                                   src={withBaseUrl(variants.a.thumb)}
                                   alt={variants.a.label}
-                                  loading="lazy"
+                                  loading="eager"
                                   decoding="async"
                                 />
                               ) : (
@@ -529,7 +529,7 @@ function VillaDetailsModal({ villa, onClose }) {
                                 <img
                                   src={withBaseUrl(variants.b.thumb)}
                                   alt={variants.b.label}
-                                  loading="lazy"
+                                  loading="eager"
                                   decoding="async"
                                 />
                               ) : (

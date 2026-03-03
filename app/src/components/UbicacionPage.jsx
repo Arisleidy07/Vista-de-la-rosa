@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function UbicacionPage() {
   return (
@@ -13,9 +13,9 @@ export default function UbicacionPage() {
               durante todo el año.
             </p>
             <p className="section-text ubicacion-secondary-text">
-              Disfruta de vistas espectaculares y un ambiente privado y tranquilo,
-              perfecto para descansar, compartir y realizar actividades
-              especiales.
+              Disfruta de vistas espectaculares y un ambiente privado y
+              tranquilo, perfecto para descansar, compartir y realizar
+              actividades especiales.
             </p>
           </div>
           <div className="ubicacion-map">
@@ -23,7 +23,7 @@ export default function UbicacionPage() {
               <iframe
                 src="https://www.google.com/maps?q=Jarabacoa%2C%20Rep%C3%BAblica%20Dominicana&output=embed"
                 title="Mapa de Jarabacoa, República Dominicana"
-                loading="lazy"
+                loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>

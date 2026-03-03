@@ -166,14 +166,14 @@ function ServiceGallery({ serviceKey, onOpenLightbox }) {
             frameBorder="0"
             allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
-            loading="lazy"
+            loading="eager"
           />
         ) : (
           <img
             src={active.src}
             alt={serviceKey}
             className="service-gallery-image"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
         )}
