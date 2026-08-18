@@ -1,3 +1,34 @@
 .DS_Store
 
 app/dist
+app/node_modules
+
+# Secrets / environment
+.env
+.env.local
+.env.*.local
+serviceAccount*.json
+.firebase/
+
+# Vite cache
+app/node_modules/.vite
+
+# Media already migrated to Cloudinary
+app/public/**/*.jpg
+app/public/**/*.JPG
+app/public/**/*.jpeg
+app/public/**/*.JPEG
+app/public/**/*.png
+app/public/**/*.PNG
+app/public/**/*.webp
+app/public/**/*.WEBP
+app/public/**/*.mp4
+app/public/**/*.MP4
+app/public/**/*.mov
+app/public/**/*.MOV
+app/public/**/*.webm
+app/public/**/*.WEBM
+app/public/**/*.mkv
+app/public/**/*.MKV
+app/public/**/*.avi
+app/public/**/*.AVI

@@ -3,59 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vista de la Rosa Jarabacoa</title>
-    <link rel="icon" type="image/png" href="/villa.PNG" />
+    <meta name="theme-color" content="#1b3a2a" />
+    <meta name="msapplication-TileColor" content="#1b3a2a" />
 
-    <!-- Preload recursos críticos - CARGA INSTANTÁNEA -->
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
-      as="style"
+    <title>Vista de la Rosa | Villas privadas en Jarabacoa</title>
+    <meta
+      name="description"
+      content="Villas privadas con piscina, jacuzzi, áreas sociales y vistas a la montaña en Jarabacoa. Reserva tu escape perfecto en las montañas."
     />
+    <link rel="canonical" href="https://vistadelarosa.do/" />
     <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      as="style"
+      rel="icon"
+      type="image/png"
+      href="https://res.cloudinary.com/dprojkgqf/image/upload/q_auto,f_auto,w_192/vistadelarosa/villapng"
     />
-    <link rel="preload" href="/src/styles.css" as="style" />
-    <link rel="preload" href="/src/main.jsx" as="script" />
 
-    <!-- Preload imágenes principales - CARGA INSTANTÁNEA -->
-    <link rel="preload" href="/habitacion%20%231/1.JPG" as="image" />
-    <link rel="preload" href="/habitacion%20%231/2.JPG" as="image" />
-    <link rel="preload" href="/habitacion%20%231/3.JPG" as="image" />
-    <link rel="preload" href="/habitacion%20%231/4.JPG" as="image" />
-    <link rel="preload" href="/habitacion%20%231/5.JPG" as="image" />
-    <link rel="preload" href="/habitacion%20%231/6.JPG" as="image" />
-    <link rel="preload" href="/habitacion%232/1.JPG" as="image" />
-    <link rel="preload" href="/habitacion%232/2.JPG" as="image" />
-    <link rel="preload" href="/habitacion%232/3.JPG" as="image" />
-    <link rel="preload" href="/habitacion%233/1.JPG" as="image" />
-    <link rel="preload" href="/habitacion%233/2.JPG" as="image" />
-    <link rel="preload" href="/habitacion%233/3.JPG" as="image" />
-    <link rel="preload" href="/area%20de%20DESCANSO/1.JPG" as="image" />
-    <link rel="preload" href="/area%20de%20DESCANSO/3.JPG" as="image" />
-    <link rel="preload" href="/area%20de%20DESCANSO/4.JPG" as="image" />
-    <link rel="preload" href="/area%20de%20DESCANSO/5.JPG" as="image" />
-    <link rel="preload" href="/area%20de%20DESCANSO/6.JPG" as="image" />
-    <link rel="preload" href="/comedor/1.JPG" as="image" />
-    <link rel="preload" href="/comedor/cocina%20equipada/1.JPG" as="image" />
-    <link rel="preload" href="/billar/2.JPG" as="image" />
-    <link rel="preload" href="/billar/3.JPG" as="image" />
-    <link rel="preload" href="/4.jpg" as="image" />
-    <link rel="preload" href="/5.jpg" as="image" />
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Vista de la Rosa | Villas privadas en Jarabacoa"
+    />
+    <meta
+      property="og:description"
+      content="Villas privadas con piscina, jacuzzi, áreas sociales y vistas a la montaña en Jarabacoa."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vistadelarosa.do/" />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dprojkgqf/image/upload/q_auto,f_auto,w_1200/vistadelarosa/habitacion_num1/1jpg"
+    />
+    <meta property="og:locale" content="es_DO" />
 
-    <!-- DNS prefetch para recursos externos -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Vista de la Rosa | Villas privadas en Jarabacoa"
+    />
+    <meta
+      name="twitter:description"
+      content="Villas privadas con piscina, jacuzzi, áreas sociales y vistas a la montaña en Jarabacoa."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/dprojkgqf/image/upload/q_auto,f_auto,w_1200/vistadelarosa/habitacion_num1/1jpg"
+    />
+
+    <!-- Preconnect y dns-prefetch -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="//res.cloudinary.com" />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="//www.youtube.com" />
-    <link rel="dns-prefetch" href="//img.youtube.com" />
 
-    <!-- Preconnect para recursos críticos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="preconnect" href="https://www.youtube.com" crossorigin />
-
+    <!-- Estilos críticos -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
@@ -68,55 +75,13 @@
       rel="stylesheet"
     />
 
-    <!-- Optimización de rendimiento -->
-    <meta name="theme-color" content="#1b3a2a" />
-    <meta name="msapplication-TileColor" content="#1b3a2a" />
-    <meta
-      name="description"
-      content="Villas privadas con amenidades premium en Jarabacoa. Tu escape perfecto en las montañas."
-    />
-
+    <!-- Service worker placeholder para futura PWA -->
     <script>
-      // Optimización de carga crítica
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
-          // Service worker para cache futuro (opcional)
+          // navigator.serviceWorker.register("/service-worker.js");
         });
       }
-
-      // Prevenir layout shift
-      document.addEventListener("DOMContentLoaded", function () {
-        document.body.style.opacity = "0";
-        setTimeout(() => {
-          document.body.style.transition = "opacity 0.3s ease";
-          document.body.style.opacity = "1";
-        }, 100);
-      });
-
-      (function (l) {
-        if (l.search && l.search.startsWith("?/") && l.search.length > 2) {
-          var decoded = l.search
-            .slice(2)
-            .replace(/~and~/g, "&")
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("&");
-          var nextPath = "/" + decoded;
-          var nextSearch = "";
-          var parts = decoded.split("?");
-          if (parts.length > 1) {
-            nextPath = "/" + parts[0];
-            nextSearch = "?" + parts.slice(1).join("?");
-          }
-          window.history.replaceState(
-            null,
-            null,
-            nextPath + nextSearch + l.hash,
-          );
-        }
-      })(window.location);
     </script>
   </head>
   <body>

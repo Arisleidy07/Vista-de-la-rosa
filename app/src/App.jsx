@@ -1,112 +1,21 @@
-import React from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import VillasPage from "./components/VillasPage";
-import ServicesPage from "./components/ServicesPage";
-import UbicacionPage from "./components/UbicacionPage";
-import ContactPage from "./components/ContactPage";
-import Footer from "./components/Footer";
-import WhatsAppButton from "./components/WhatsAppButton";
+import { Suspense, lazy } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/layout/Layout.jsx";
+import "./config/firebase.js";
 
-function Layout({ children }) {
-  const [isNavOpen, setIsNavOpen] = React.useState(false);
+const HomePage = lazy(() => import("./components/pages/HomePage.jsx"));
+const VillasPage = lazy(() => import("./components/pages/VillasPage.jsx"));
+const ServicesPage = lazy(() => import("./components/pages/ServicesPage.jsx"));
+const UbicacionPage = lazy(
+  () => import("./components/pages/UbicacionPage.jsx"),
+);
+const ContactPage = lazy(() => import("./components/pages/ContactPage.jsx"));
 
-  const assetBase =
-    import.meta.env.VITE_ASSET_BASE_URL || import.meta.env.BASE_URL;
-  const logoSrc = `${assetBase}villa.PNG`;
-
-  const handleNavLinkClick = () => {
-    setIsNavOpen(false);
-  };
-
+function PageLoader() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <nav className="app-navbar">
-          <div className="app-navbar-brand">
-            <NavLink to="/" className="brand-link" onClick={handleNavLinkClick}>
-              <img
-                src={logoSrc}
-                alt="Vista de la Rosa logo"
-                className="brand-logo"
-              />
-              <span className="brand-text">Vista de la Rosa</span>
-              <i
-                className="fa-brands fa-whatsapp brand-whatsapp-icon"
-                aria-hidden="true"
-              ></i>
-            </NavLink>
-          </div>
-
-          <button
-            type="button"
-            className="nav-toggle"
-            onClick={() => setIsNavOpen((prev) => !prev)}
-            aria-label="Abrir menú de navegación"
-          >
-            <span className="nav-toggle-bar" />
-          </button>
-
-          <ul
-            className={
-              "app-nav-links" + (isNavOpen ? " app-nav-links-open" : "")
-            }
-          >
-            <li>
-              <NavLink
-                to="/"
-                end
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Inicio
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/villas"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Villas
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/servicios"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Servicios
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/ubicacion"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Ubicación
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contacto"
-                className="app-nav-link"
-                onClick={handleNavLinkClick}
-              >
-                Contacto
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <main className="app-main">{children}</main>
-
-      <Footer />
-
-      <WhatsAppButton />
+    <div className="page-loader" aria-live="polite">
+      <div className="page-loader-spinner" />
+      <span className="sr-only">Cargando página...</span>
     </div>
   );
 }
@@ -114,13 +23,15 @@ function Layout({ children }) {
 function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/villas" element={<VillasPage />} />
-        <Route path="/servicios" element={<ServicesPage />} />
-        <Route path="/ubicacion" element={<UbicacionPage />} />
-        <Route path="/contacto" element={<ContactPage />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/villas" element={<VillasPage />} />
+          <Route path="/servicios" element={<ServicesPage />} />
+          <Route path="/ubicacion" element={<UbicacionPage />} />
+          <Route path="/contacto" element={<ContactPage />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }

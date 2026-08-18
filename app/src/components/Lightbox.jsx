@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { getYouTubeEmbedUrl } from "../youtube";
+import { getCloudinaryUrl } from "../lib/utils.js";
 
 // Lightbox genérico para imágenes y videos, reutilizable en villas y servicios
 export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
@@ -15,21 +15,6 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
 
   const safeIndex = Math.max(0, Math.min(index, items.length - 1));
   const active = items[safeIndex];
-
-  const lightboxYouTubeSrc =
-    active?.type === "video" &&
-    active?.src &&
-    String(active.src).includes("youtube")
-      ? getYouTubeEmbedUrl(active.src, {
-          autoplay: false,
-          muted: false,
-          loop: false,
-          controls: true,
-          playsInline: true,
-          fs: true,
-          disablekb: false,
-        })
-      : null;
 
   const countLabel =
     items.length > 1 ? `${safeIndex + 1} / ${items.length}` : null;
@@ -90,17 +75,26 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
     window.setTimeout(updateThumbScrollState, 200);
   };
 
-  // Precarga simple de las imágenes vecinas para evitar parpadeos
+  // Precarga optimizada de las imágenes vecinas usando Cloudinary
   useEffect(() => {
     if (!items || items.length <= 1) return;
 
-    const neighbors = [index - 1, index + 1];
+    const neighbors = [index - 1, index, index + 1];
     neighbors.forEach((i) => {
       const normalized = (i + items.length) % items.length;
       const item = items[normalized];
       if (!item || item.type !== "image") return;
       const img = new Image();
-      img.src = item.src;
+      // Usar Cloudinary si el src es un Cloudinary ID
+      if (item.src && item.src.startsWith("vistadelarosa/")) {
+        img.src = getCloudinaryUrl(item.src, {
+          width: 1920,
+          quality: "auto",
+          format: "auto",
+        });
+      } else {
+        img.src = item.src;
+      }
     });
   }, [index, items]);
 
@@ -138,6 +132,21 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
+  // Obtener URL optimizada para la imagen actual
+  const getOptimizedSrc = (src, isMain = false) => {
+    if (!src) return src;
+    if (src.startsWith("http")) return src;
+    if (src.startsWith("vistadelarosa/")) {
+      return getCloudinaryUrl(src, {
+        width: isMain ? 1920 : 120,
+        quality: "auto",
+        format: "auto",
+        crop: "fill",
+      });
+    }
+    return src;
+  };
+
   return (
     <div className="lightbox-backdrop" onClick={onClose}>
       <div
@@ -168,30 +177,20 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
           onTouchEnd={onTouchEnd}
         >
           {active.type === "video" ? (
-            active.src && String(active.src).includes("youtube") ? (
-              <iframe
-                src={lightboxYouTubeSrc || active.src}
-                className="lightbox-main-media"
-                title={active.alt || "Video"}
-                frameBorder="0"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowFullScreen
-                loading="eager"
-              />
-            ) : (
-              <video
-                src={active.src}
-                className="lightbox-main-media"
-                controls
-                autoPlay
-                playsInline
-                preload="metadata"
-                poster={active.thumb || undefined}
-              />
-            )
+            <video
+              src={active.src}
+              className="lightbox-main-media"
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+              poster={
+                active.thumb ? getOptimizedSrc(active.thumb, true) : undefined
+              }
+            />
           ) : (
             <img
-              src={active.src}
+              src={getOptimizedSrc(active.src, true)}
               alt={active.alt || "Imagen"}
               className="lightbox-main-media"
               loading="eager"
@@ -252,7 +251,7 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
                     <div className="lightbox-thumb-video">
                       {item.thumb && (
                         <img
-                          src={item.thumb}
+                          src={getOptimizedSrc(item.thumb)}
                           alt={item.alt || "Vista previa del video"}
                         />
                       )}
@@ -260,8 +259,9 @@ export default function Lightbox({ items, initialIndex = 0, title, onClose }) {
                     </div>
                   ) : (
                     <img
-                      src={item.src}
+                      src={getOptimizedSrc(item.src)}
                       alt={item.alt || `Miniatura ${idx + 1}`}
+                      loading="lazy"
                     />
                   )}
                 </button>

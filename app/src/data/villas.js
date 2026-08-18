@@ -1,40 +1,27 @@
-import { getYouTubeEmbedUrl } from "../youtube";
-
 export const WHATSAPP_NUMBER = "18293410707";
 export const WHATSAPP_NUMBER_SECONDARY = "18296511212";
 
-const useCloudinary = Boolean(import.meta.env?.VITE_CLOUDINARY_CLOUD_NAME);
-const cloudName = useCloudinary
-  ? import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
-  : "";
-
-function cloudVideo(publicId, fallback) {
-  if (!cloudName) return fallback;
-  const normalized = publicId.startsWith("/") ? publicId.slice(1) : publicId;
-  return `https://res.cloudinary.com/${cloudName}/video/upload/f_mp4/${normalized}`;
+function villaVideo(blockNumber) {
+  return {
+    provider: "cloudinary",
+    videoId: `vistadelarosa/videos/habitacion_${blockNumber}/bloque_${blockNumber}`,
+    title: `Habitación #${blockNumber} - video`,
+    duration: null,
+  };
 }
 
-const blockYouTubeVideos = {
-  1: "https://youtu.be/sjmSHZlYO_Q",
-  2: "https://youtu.be/GTGvjMlesWk",
-  3: "https://youtu.be/XyHTD1mHU5c",
-  4: "https://youtu.be/yqAqie1-HrU",
-  5: "https://youtu.be/sExueatsnA8",
-  6: "https://youtu.be/N4sNhlUE58A",
-  7: "https://youtu.be/bweiRM_EFCE",
-  8: "https://youtu.be/pf0ct1JXHpk",
-};
-
-function youtubeVillaVideo(blockNumber) {
-  const link = blockYouTubeVideos[blockNumber];
-  if (!link) return null;
-  return getYouTubeEmbedUrl(link, {
-    autoplay: false,
-    muted: true,
-    loop: true,
-    controls: false,
-    playsInline: true,
-  });
+function toCloudinaryId(localPath) {
+  if (!localPath) return null;
+  if (localPath.startsWith("http")) return localPath;
+  const cleanPath = localPath.replace(/^\//, "").replace(/\.[^.]+$/, "");
+  const sanitized = cleanPath
+    .replace(/%/g, "")
+    .replace(/#/g, "num")
+    .replace(/\s+/g, "_")
+    .replace(/[^\w\-_/]/g, "")
+    .replace(/_+$/, "")
+    .toLowerCase();
+  return `vistadelarosa/${sanitized}`;
 }
 
 export const blockDetailConfig = {
@@ -46,30 +33,30 @@ export const blockDetailConfig = {
     variants: {
       a: {
         label: "Habitación A",
-        thumb: "/habitacion%20%231/habitacion%20A/7.JPG",
+        thumb: toCloudinaryId("/habitacion %231/habitacion A/7.JPG"),
         images: [
-          "/habitacion%20%231/habitacion%20A/7.JPG",
-          "/habitacion%20%231/habitacion%20A/8.JPG",
-          "/habitacion%20%231/habitacion%20A/9.JPG",
-          "/habitacion%20%231/habitacion%20A/10.JPG",
-          "/habitacion%20%231/habitacion%20A/11.JPG",
-          "/habitacion%20%231/habitacion%20A/12.JPG",
-          "/habitacion%20%231/habitacion%20A/14.JPG",
-          "/habitacion%20%231/habitacion%20A/15.JPG",
+          toCloudinaryId("/habitacion %231/habitacion A/7.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/8.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/9.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/10.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/11.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/12.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/14.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion A/15.JPG"),
         ],
       },
       b: {
         label: "Habitación B",
-        thumb: "/habitacion%20%231/habitacion%20B/17.JPG",
+        thumb: toCloudinaryId("/habitacion %231/habitacion B/17.JPG"),
         images: [
-          "/habitacion%20%231/habitacion%20B/17.JPG",
-          "/habitacion%20%231/habitacion%20B/18.JPG",
-          "/habitacion%20%231/habitacion%20B/19.JPG",
-          "/habitacion%20%231/habitacion%20B/20.JPG",
-          "/habitacion%20%231/habitacion%20B/21.JPG",
-          "/habitacion%20%231/habitacion%20B/22.JPG",
-          "/habitacion%20%231/habitacion%20B/23.JPG",
-          "/habitacion%20%231/habitacion%20B/24.JPG",
+          toCloudinaryId("/habitacion %231/habitacion B/17.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/18.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/19.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/20.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/21.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/22.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/23.JPG"),
+          toCloudinaryId("/habitacion %231/habitacion B/24.JPG"),
         ],
       },
     },
@@ -94,27 +81,27 @@ export const blockDetailConfig = {
     variants: {
       a: {
         label: "Habitación A",
-        thumb: "/habitacion%234/habitacion%20A/10.JPG",
+        thumb: toCloudinaryId("/habitacion#4/habitacion A/10.JPG"),
         images: [
-          "/habitacion%234/habitacion%20A/10.JPG",
-          "/habitacion%234/habitacion%20A/11.JPG",
-          "/habitacion%234/habitacion%20A/12.JPG",
-          "/habitacion%234/habitacion%20A/13.JPG",
-          "/habitacion%234/habitacion%20A/15.JPG",
+          toCloudinaryId("/habitacion#4/habitacion A/10.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion A/11.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion A/12.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion A/13.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion A/15.JPG"),
         ],
       },
       b: {
         label: "Habitación B",
-        thumb: "/habitacion%234/habitacion%20B%20/16.JPG",
+        thumb: toCloudinaryId("/habitacion#4/habitacion B /16.JPG"),
         images: [
-          "/habitacion%234/habitacion%20B%20/16.JPG",
-          "/habitacion%234/habitacion%20B%20/17.JPG",
-          "/habitacion%234/habitacion%20B%20/18.JPG",
-          "/habitacion%234/habitacion%20B%20/19.JPG",
-          "/habitacion%234/habitacion%20B%20/20.JPG",
-          "/habitacion%234/habitacion%20B%20/21.JPG",
-          "/habitacion%234/habitacion%20B%20/22.JPG",
-          "/habitacion%234/habitacion%20B%20/23.JPG",
+          toCloudinaryId("/habitacion#4/habitacion B /16.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /17.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /18.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /19.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /20.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /21.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /22.JPG"),
+          toCloudinaryId("/habitacion#4/habitacion B /23.JPG"),
         ],
       },
     },
@@ -144,11 +131,11 @@ export const blockDetailConfig = {
     amenities: ["Balcón", "Comedor", "Cocina", "A/C", "TV"],
   },
 };
-// Helpers para generar arrays de imágenes numeradas, usando rutas relativas a app/public
+// Helpers para generar arrays de imágenes numeradas, usando Cloudinary IDs
 function makeNumberedImages(basePath, count) {
   const images = [];
   for (let i = 1; i <= count; i += 1) {
-    images.push(`${basePath}/${i}.JPG`);
+    images.push(toCloudinaryId(`${basePath}/${i}.JPG`));
   }
   return images;
 }
@@ -158,7 +145,7 @@ function makeNumberedImagesWithSkips(basePath, count, skipNumbers) {
   const images = [];
   for (let i = 1; i <= count; i += 1) {
     if (skipSet.has(i)) continue;
-    images.push(`${basePath}/${i}.JPG`);
+    images.push(toCloudinaryId(`${basePath}/${i}.JPG`));
   }
   return images;
 }
@@ -172,7 +159,7 @@ function getNightlyPriceForVilla(villa) {
   return 0;
 }
 
-// Datos de villas basados en script.js, adaptados a rutas de la carpeta public
+// Datos de villas basados en script.js, adaptados a Cloudinary IDs
 const baseVillas = [
   {
     id: "h1",
@@ -185,15 +172,15 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: [
-      "/habitacion%20%231/1.JPG",
-      "/habitacion%20%231/2.JPG",
-      "/habitacion%20%231/3.JPG",
-      "/habitacion%20%231/4.JPG",
-      "/habitacion%20%231/5.JPG",
-      "/habitacion%20%231/6.JPG",
-      "/habitacion%20%231/25.JPG",
+      toCloudinaryId("/habitacion %231/1.JPG"),
+      toCloudinaryId("/habitacion %231/2.JPG"),
+      toCloudinaryId("/habitacion %231/3.JPG"),
+      toCloudinaryId("/habitacion %231/4.JPG"),
+      toCloudinaryId("/habitacion %231/5.JPG"),
+      toCloudinaryId("/habitacion %231/6.JPG"),
+      toCloudinaryId("/habitacion %231/25.JPG"),
     ],
-    videoUrl: youtubeVillaVideo(1),
+    video: villaVideo(1),
   },
   {
     id: "h2",
@@ -205,8 +192,8 @@ const baseVillas = [
     rooms: "1",
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
-    images: makeNumberedImages("/habitacion%232", 11),
-    videoUrl: youtubeVillaVideo(2),
+    images: makeNumberedImages("/habitacion#2", 11),
+    video: villaVideo(2),
   },
   {
     id: "h3",
@@ -218,8 +205,8 @@ const baseVillas = [
     rooms: "1",
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
-    images: makeNumberedImages("/habitacion%233", 11),
-    videoUrl: youtubeVillaVideo(3),
+    images: makeNumberedImages("/habitacion#3", 11),
+    video: villaVideo(3),
   },
   {
     id: "h4",
@@ -232,17 +219,17 @@ const baseVillas = [
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
     images: [
-      "/habitacion%234/1.JPG",
-      "/habitacion%234/2.JPG",
-      "/habitacion%234/3.JPG",
-      "/habitacion%234/4.JPG",
-      "/habitacion%234/5.JPG",
-      "/habitacion%234/6.JPG",
-      "/habitacion%234/7.JPG",
-      "/habitacion%234/8.JPG",
-      "/habitacion%234/9.JPG",
+      toCloudinaryId("/habitacion#4/1.JPG"),
+      toCloudinaryId("/habitacion#4/2.JPG"),
+      toCloudinaryId("/habitacion#4/3.JPG"),
+      toCloudinaryId("/habitacion#4/4.JPG"),
+      toCloudinaryId("/habitacion#4/5.JPG"),
+      toCloudinaryId("/habitacion#4/6.JPG"),
+      toCloudinaryId("/habitacion#4/7.JPG"),
+      toCloudinaryId("/habitacion#4/8.JPG"),
+      toCloudinaryId("/habitacion#4/9.JPG"),
     ],
-    videoUrl: youtubeVillaVideo(4),
+    video: villaVideo(4),
   },
   {
     id: "h5",
@@ -254,8 +241,8 @@ const baseVillas = [
     rooms: "1",
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
-    images: makeNumberedImages("/habitacion%235", 9),
-    videoUrl: youtubeVillaVideo(5),
+    images: makeNumberedImages("/habitacion#5", 9),
+    video: villaVideo(5),
   },
   {
     id: "h6",
@@ -267,8 +254,8 @@ const baseVillas = [
     rooms: "1",
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
-    images: makeNumberedImages("/habitacion%236", 9),
-    videoUrl: youtubeVillaVideo(6),
+    images: makeNumberedImages("/habitacion#6", 9),
+    video: villaVideo(6),
   },
   {
     id: "h7",
@@ -280,8 +267,8 @@ const baseVillas = [
     rooms: "1",
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
-    images: makeNumberedImages("/habitacion%237", 9),
-    videoUrl: youtubeVillaVideo(7),
+    images: makeNumberedImages("/habitacion#7", 9),
+    video: villaVideo(7),
   },
   {
     id: "h8",
@@ -293,8 +280,8 @@ const baseVillas = [
     rooms: "1",
     baths: "Consultar",
     amenities: ["Cocina", "Wifi", "TV", "A/C", "Parqueo"],
-    images: makeNumberedImages("/habitacion%238", 14),
-    videoUrl: youtubeVillaVideo(8),
+    images: makeNumberedImages("/habitacion#8", 14),
+    video: villaVideo(8),
   },
 ];
 

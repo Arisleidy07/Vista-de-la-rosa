@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vista de la Rosa Jarabacoa</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var l = window.location;
+        var segments = l.pathname.split("/").filter(Boolean);
+        var repo = segments.length ? segments[0] : "";
+        var rest = segments.slice(1).join("/");
+
+        var target = l.protocol + "//" + l.host + "/" + repo + "/?/" + rest;
+        if (l.search) target += l.search.replace("?", "&");
+        if (l.hash) target += l.hash;
+
+        l.replace(target);
+      })();
+    </script>
+  </body>
+</html>

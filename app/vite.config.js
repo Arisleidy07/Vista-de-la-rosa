@@ -54,6 +54,24 @@ export default defineConfig({
       },
     },
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Vendor chunks
+          if (id.includes("node_modules")) {
+            if (id.includes("firebase")) return "firebase";
+            if (id.includes("react-router") || id.includes("@remix-run"))
+              return "router";
+            if (id.includes("react") || id.includes("scheduler"))
+              return "react";
+            return "vendor";
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
   server: {
     port: 5174,
   },
