@@ -28,3 +28,4 @@ public/**/*.mkv
 public/**/*.MKV
 public/**/*.avi
 public/**/*.AVI
+.env*
