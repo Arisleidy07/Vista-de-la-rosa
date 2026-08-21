@@ -2,12 +2,7 @@ export const WHATSAPP_NUMBER = "18293410707";
 export const WHATSAPP_NUMBER_SECONDARY = "18296511212";
 
 function villaVideo(blockNumber) {
-  return {
-    provider: "cloudinary",
-    videoId: `vistadelarosa/videos/habitacion_${blockNumber}/bloque_${blockNumber}`,
-    title: `Habitación #${blockNumber} - video`,
-    duration: null,
-  };
+  return null;
 }
 
 function toCloudinaryId(localPath) {

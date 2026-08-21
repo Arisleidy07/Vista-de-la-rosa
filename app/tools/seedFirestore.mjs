@@ -252,7 +252,7 @@ async function seedVillas() {
       amenities: cfg.amenities || villa.amenities || [],
       images: normalizeImages(villa.images, villa.title),
       variants: buildVariants(villa.block, villa.title),
-      video: villa.video || null,
+      video: null,
       location: {
         address: "",
         latitude: null,
